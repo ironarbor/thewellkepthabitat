@@ -1,14 +1,10 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "wellkepthabitat",
-  "compatibility_date": "2026-06-03",
+  "main": "vinext/server/fetch-handler",
+  "compatibility_date": "2026-09-01",
+  "compatibility_flags": ["nodejs_compat"],
   "observability": {
     "enabled": true
-  },
-  "assets": {
-    "directory": "."
-  },
-  "compatibility_flags": [
-    "nodejs_compat"
-  ]
+  }
 }
