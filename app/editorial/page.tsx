@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const editorialLenses = [
   { icon: Camera, title: 'Garden portraits', text: 'Local landscapes and the people whose attention, choices and care shape them.' },
   { icon: CalendarDays, title: 'Seasonal ecology', text: 'What is happening now—and what the changing season makes possible next.' },
-  { icon: Sprout, title: 'Native beauty', text: 'Plants, compositions and relationships that are both refined and useful to life.' },
+  { icon: Sprout, title: 'Native elegance', text: 'Plants, compositions and relationships that are both refined and useful to life.' },
   { icon: MapPin, title: 'A sense of place', text: 'Practical ideas grounded in Longmeadow and the wider New England landscape.' },
 ];
 
@@ -22,7 +22,7 @@ export default function EditorialPage() {
       <PageHero
         eyebrow="Editorial · In development"
         title={<>The Well-Kept Habitat —<br /><em>Local Landscape Editorial.</em></>}
-        intro="A quarterly publication envisioned for Longmeadow homeowners—rooted in place, alive to the seasons and attentive to the beauty already growing close to home."
+        intro="A quarterly publication envisioned for Longmeadow homeowners—rooted in place, alive to the seasons and attentive to the elegance already growing close to home."
         dark
       >
         <a className="button button-ivory" href="/editorial/issues-or-articles">Explore issues & articles <ArrowRight size={17} /></a>
@@ -48,7 +48,7 @@ export default function EditorialPage() {
 
       <section className="editorial-purpose">
         <BookOpen size={30} />
-        <blockquote>Local enough to recognize. Beautiful enough to keep. Useful enough to change what happens next.</blockquote>
+        <blockquote>Local enough to recognize. Elegant enough to keep. Useful enough to change what happens next.</blockquote>
         <p>The editorial is envisioned as a recurring invitation to notice more, understand more and tend with greater confidence.</p>
       </section>
 

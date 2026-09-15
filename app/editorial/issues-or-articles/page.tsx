@@ -9,9 +9,9 @@ export const metadata: Metadata = {
 
 const issueStories = [
   { type: 'Garden practice', title: 'Rooted in Place', text: 'Designing ecological gardens that thrive in Longmeadow.' },
-  { type: 'Plant perspective', title: 'Native Beauty', text: 'The sophisticated elegance of native plants in every season.' },
+  { type: 'Plant perspective', title: 'Native Elegance', text: 'The sophisticated elegance of native plants in every season.' },
   { type: 'Garden portrait', title: 'Local Gardens', text: 'Inspiration from the home landscapes of our community.' },
-  { type: 'Seasonal guide', title: 'A More Useful Autumn', text: 'Planting and tending for pollinators, wildlife and enduring beauty.' },
+  { type: 'Seasonal guide', title: 'A More Useful Autumn', text: 'Planting and tending for pollinators, wildlife and enduring elegance.' },
 ];
 
 export default function IssuesArticlesPage() {
@@ -28,7 +28,7 @@ export default function IssuesArticlesPage() {
 
       <section className="issue-overview">
         <div className="issue-meta"><span>Spring 2027</span><span>Volume 1 · Issue 1</span><span>Longmeadow, Massachusetts</span></div>
-        <div className="issue-title"><p className="kicker">Forthcoming</p><h2>Rooted in place.</h2><p>A quarterly collection of local garden portraits, seasonal ecology, native beauty and practical ideas that help ecological usefulness feel visible and within reach.</p></div>
+        <div className="issue-title"><p className="kicker">Forthcoming</p><h2>Rooted in place.</h2><p>A quarterly collection of local garden portraits, seasonal ecology, native elegance and practical ideas that help ecological usefulness feel visible and within reach.</p></div>
       </section>
 
       <section className="story-preview-grid">

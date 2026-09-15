@@ -38,7 +38,7 @@ export default function FounderBackgroundPage() {
       </section>
 
       <section className="founder-quote">
-        <blockquote>“The deeper idea is one nature demonstrates repeatedly: function can be beautiful, structure can create abundance, and small acts can matter beyond their boundaries.”</blockquote>
+        <blockquote>“The deeper idea is one nature demonstrates repeatedly: function can be elegant, structure can create abundance, and small acts can matter beyond their boundaries.”</blockquote>
       </section>
 
       <section className="page-next-links">

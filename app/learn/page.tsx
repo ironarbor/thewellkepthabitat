@@ -30,7 +30,7 @@ export default function LearnPage() {
 
       <section className="learning-philosophy">
         <p className="eyebrow light"><span /> The learning philosophy</p>
-        <blockquote>Beauty draws attention. Attention creates curiosity. Curiosity can become understanding—and stewardship.</blockquote>
+        <blockquote>Elegance draws attention. Attention creates curiosity. Curiosity can become understanding—and stewardship.</blockquote>
       </section>
 
       <section className="learning-inquiry">

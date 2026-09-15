@@ -12,8 +12,8 @@ export default function Home() {
         <div className="hero-shade" />
         <div className="hero-content">
           <p className="eyebrow light"><span /> Cultivated landscapes · New England</p>
-          <h1>Beauty, arranged<br />in service of life.</h1>
-          <p className="hero-intro">The Well-Kept Habitat explores what becomes possible when intentional beauty and ecological usefulness share the same ground.</p>
+          <h1>Elegance, arranged<br />in service of life.</h1>
+          <p className="hero-intro">The Well-Kept Habitat explores what becomes possible when intentional elegance and ecological usefulness share the same ground.</p>
           <div className="hero-actions">
             <a className="button button-ivory" href="/editorial">Explore the editorial <BookOpen size={17} /></a>
             <a className="text-link light-link" href="/services">Discover habitat services <ArrowDownRight size={17} /></a>
@@ -51,7 +51,7 @@ export default function Home() {
         <div className="quote-seal" aria-hidden="true"><img src="/images/twkh-logo-seal-web.png" alt="" /></div>
         <div>
           <p className="eyebrow"><span /> About TWKH</p>
-          <blockquote>“Beauty invites us closer; understanding gives us reason to care.”</blockquote>
+          <blockquote>“Elegance invites us closer; understanding gives us reason to care.”</blockquote>
           <p>TWKH uses intentional composition to help ecological usefulness become easier to see, appreciate and choose.</p>
           <a className="text-link" href="/about">Explore the philosophy <ArrowRight size={17} /></a>
         </div>
@@ -62,7 +62,7 @@ export default function Home() {
         <div className="editorial-copy">
           <p className="kicker">First issue · Spring 2027</p>
           <h2>The Well-Kept Habitat — <em>Local Landscape Editorial</em></h2>
-          <p>Garden portraits, seasonal ecology, native beauty and practical ideas with a strong sense of place.</p>
+          <p>Garden portraits, seasonal ecology, native elegance and practical ideas with a strong sense of place.</p>
           <a className="text-link light-link" href="/editorial/issues-or-articles">Preview the first issue <ArrowRight size={17} /></a>
         </div>
       </section>

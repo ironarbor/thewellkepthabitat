@@ -14,7 +14,7 @@ export default function ServicesPage() {
       <PageHero
         eyebrow="Habitat Services"
         title={<>See your landscape<br /><em>with new attention.</em></>}
-        intro="Consultations and The Habitat Portrait translate credible ecological observation into clear, beautiful and manageable agency for property stewards."
+        intro="Consultations and The Habitat Portrait translate credible ecological observation into clear, elegant and manageable agency for property stewards."
         image="/images/twkh-garden-hero.jpg"
         imageAlt="Native perennials within a thoughtfully composed habitat garden"
       />

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 };
 
 const principles = [
-  { icon: Brackets, title: 'Beauty + usefulness', text: 'Intentional composition can make a landscape coherent to the human eye while increasing its capacity to support life.' },
+  { icon: Brackets, title: 'Elegance + usefulness', text: 'Intentional composition can make a landscape coherent to the human eye while increasing its capacity to support life.' },
   { icon: CircleDot, title: 'Relationship creates habitat', text: 'Plants, insects, soil, water, people and place become habitat through what becomes possible among them.' },
   { icon: Sprout, title: 'Care scales outward', text: 'Plant within garden, garden within neighborhood, neighborhood within watershed: care at one scale participates in life at another.' },
 ];
@@ -19,8 +19,8 @@ export default function AboutPage() {
       <SiteHeader current="about" />
       <PageHero
         eyebrow="About TWKH"
-        title={<>Beauty can be<br /><em>an invitation to care.</em></>}
-        intro="The Well-Kept Habitat creates, interprets and celebrates cultivated landscapes in which intentional beauty and ecological usefulness reinforce one another."
+        title={<>Elegance can be<br /><em>an invitation to care.</em></>}
+        intro="The Well-Kept Habitat creates, interprets and celebrates cultivated landscapes in which intentional elegance and ecological usefulness reinforce one another."
         image="/images/twkh-garden-hero.jpg"
         imageAlt="A cultivated New England habitat garden in warm light"
       />
@@ -28,8 +28,8 @@ export default function AboutPage() {
       <section className="manifesto-section">
         <p className="section-index">The central idea</p>
         <div>
-          <h2>A well-kept habitat is beauty arranged in service of life—and beauty used as an invitation to care.</h2>
-          <p>TWKH does not propose one correct aesthetic for nature. A meadow, woodland edge, untended patch and formally composed native garden can all be thriving habitats. We focus on one particular opportunity: using thoughtful composition to make ecological value visible and inviting to people who may first be drawn in by beauty.</p>
+          <h2>A well-kept habitat is elegance arranged in service of life—and elegance used as an invitation to care.</h2>
+          <p>TWKH does not propose one correct aesthetic for nature. A meadow, woodland edge, untended patch and formally composed native garden can all be thriving habitats. We focus on one particular opportunity: using thoughtful composition to make ecological value visible and inviting to people who may first be drawn in by elegance.</p>
         </div>
       </section>
 
@@ -63,9 +63,9 @@ export default function AboutPage() {
         </div>
         <div className="long-view-grid">
           <article><span>01</span><h3>Field guides & books</h3><p>Enduring editorial resources that turn the TWKH point of view into useful reference objects.</p></article>
-          <article><span>02</span><h3>Habitat goods</h3><p>Considered objects that help observation, beauty and stewardship live beyond a single visit.</p></article>
+          <article><span>02</span><h3>Habitat goods</h3><p>Considered objects that help observation, elegance and stewardship live beyond a single visit.</p></article>
           <article><span>03</span><h3>Learning in community</h3><p>Seasonal workshops, talks and conversations for homeowners and local organizations.</p></article>
-          <article><span>04</span><h3>A mark of recognition</h3><p>A future standard celebrating landscapes where intentional beauty and ecological usefulness reinforce one another.</p></article>
+          <article><span>04</span><h3>A mark of recognition</h3><p>A future standard celebrating landscapes where intentional elegance and ecological usefulness reinforce one another.</p></article>
         </div>
       </section>
 

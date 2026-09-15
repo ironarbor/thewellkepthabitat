@@ -35,7 +35,7 @@ export function SiteFooter() {
     <footer>
       <div className="footer-brand"><span>TWKH</span><p>The Well-Kept Habitat</p></div>
       <div>
-        <p className="footer-mission">Cultivating beauty, curiosity and ecological stewardship in New England.</p>
+        <p className="footer-mission">Cultivating elegance, curiosity and ecological stewardship in New England.</p>
         <nav className="footer-nav" aria-label="Footer navigation">
           {navigation.map((item) => <a href={item.href} key={item.key}>{item.label}</a>)}
         </nav>

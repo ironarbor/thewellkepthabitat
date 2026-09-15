@@ -8,9 +8,9 @@ export const metadata: Metadata = {
 };
 
 const shopPlans = [
-  { icon: BookOpen, tag: 'Editorial collection', title: 'Field guides & books', text: 'Beautiful, practical resources for noticing habitat, choosing with care and returning to the garden season after season.' },
+  { icon: BookOpen, tag: 'Editorial collection', title: 'Field guides & books', text: 'Elegant, practical resources for noticing habitat, choosing with care and returning to the garden season after season.' },
   { icon: ImageIcon, tag: 'Photography & art', title: 'Editorial prints', text: 'Non-custom images and art objects drawn from TWKH editorial work and available to every habitat-minded home.' },
-  { icon: Sparkles, tag: 'Considered objects', title: 'Habitat goods', text: 'Useful and enduring objects designed to help observation, beauty and stewardship live in everyday practice.' },
+  { icon: Sparkles, tag: 'Considered objects', title: 'Habitat goods', text: 'Useful and enduring objects designed to help observation, elegance and stewardship live in everyday practice.' },
 ];
 
 export default function ShopPage() {
