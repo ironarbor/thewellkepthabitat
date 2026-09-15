@@ -42,7 +42,7 @@ export default function Home() {
           <Search size={28} aria-hidden="true" />
           <p className="kicker">Habitat Services</p>
           <h2>Attention made<br />useful.</h2>
-          <p>Consultations and Habitat Assessments turn careful observation into clear, manageable homeowner agency.</p>
+          <p>Consultations and The Habitat Portrait turn careful observation into clear, manageable agency for people and organizations who steward property.</p>
           <a href="/services">Explore services <ArrowRight size={17} /></a>
         </article>
       </section>

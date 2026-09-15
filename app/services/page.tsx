@@ -4,7 +4,7 @@ import { PageHero, SiteFooter, SiteHeader } from '@/components/site-shell';
 
 export const metadata: Metadata = {
   title: 'Habitat Services | The Well-Kept Habitat',
-  description: 'Habitat Assessments and consultations for New England homeowners who want to see their landscapes with new attention.',
+  description: 'The Habitat Portrait and focused consultations for homes, campuses, and other stewarded properties in New England.',
 };
 
 export default function ServicesPage() {
@@ -14,7 +14,7 @@ export default function ServicesPage() {
       <PageHero
         eyebrow="Habitat Services"
         title={<>See your landscape<br /><em>with new attention.</em></>}
-        intro="Consultations and Habitat Assessments translate credible ecological observation into clear, beautiful and manageable homeowner agency."
+        intro="Consultations and The Habitat Portrait translate credible ecological observation into clear, beautiful and manageable agency for property stewards."
         image="/images/twkh-garden-hero.jpg"
         imageAlt="Native perennials within a thoughtfully composed habitat garden"
       />
@@ -25,10 +25,10 @@ export default function ServicesPage() {
           <article className="service-choice-card dark-card">
             <span className="service-status">Foundational service · Local and in person</span>
             <Search size={31} />
-            <h2>Habitat Assessments</h2>
-            <p>A structured, evidence-informed portrait of your property combining guided observation, photography and a polished TWKH report.</p>
-            <ul><li><Check size={15} /> Best for understanding the landscape as a whole</li><li><Check size={15} /> Includes a property visit and written findings</li><li><Check size={15} /> Assessment-only add-ons available</li></ul>
-            <a href="/services/habitat-assessments">Explore assessments <ArrowRight size={17} /></a>
+            <h2>The Habitat Portrait</h2>
+            <p>An evidence-informed, current-state landscape assessment for homes, campuses, and other stewarded properties.</p>
+            <ul><li><Check size={15} /> Best for understanding the landscape as a whole</li><li><Check size={15} /> Includes a property visit and written findings</li><li><Check size={15} /> Habitat Portrait add-ons available</li></ul>
+            <a href="/services/habitat-assessments">Explore The Habitat Portrait <ArrowRight size={17} /></a>
           </article>
           <article className="service-choice-card light-card">
             <span className="service-status">Focused guidance · By inquiry</span>
@@ -43,7 +43,7 @@ export default function ServicesPage() {
 
       <section className="service-boundary">
         <Camera size={27} />
-        <div><p className="kicker">A clear product boundary</p><h2>Property-specific keepsakes belong to the assessment journey.</h2><p>Photography collections and custom habitat portraits created from your property are assessment add-ons. Products anyone can purchase independently will live in the Shop.</p></div>
+        <div><p className="kicker">A clear product boundary</p><h2>Property-specific keepsakes belong to the Habitat Portrait journey.</h2><p>Photography collections and custom habitat portraits created from your property are Habitat Portrait add-ons. Products anyone can purchase independently will live in the Shop.</p></div>
         <a className="text-link" href="/shop">See the independent Shop <ArrowRight size={17} /></a>
       </section>
 

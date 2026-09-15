@@ -4,7 +4,7 @@ import { PageHero, SiteFooter, SiteHeader } from '@/components/site-shell';
 
 export const metadata: Metadata = {
   title: 'Shop | The Well-Kept Habitat',
-  description: 'Future TWKH field guides, books, editorial prints and habitat-inspired objects available without a Habitat Assessment.',
+  description: 'Future TWKH field guides, books, editorial prints and habitat-inspired objects available independently of The Habitat Portrait.',
 };
 
 const shopPlans = [
@@ -20,20 +20,20 @@ export default function ShopPage() {
       <PageHero
         eyebrow="Shop · Future offering"
         title={<>Objects that help<br /><em>the story live on.</em></>}
-        intro="The TWKH Shop will offer independently purchasable field guides, editorial prints and considered habitat goods. No assessment will be required."
+        intro="The TWKH Shop will offer independently purchasable field guides, editorial prints and considered habitat goods. No Habitat Portrait will be required."
         dark
       />
 
       <section className="shop-boundary-banner">
         <ShoppingBag size={29} />
-        <div><p className="kicker">Available to everyone</p><h2>This is the independent Shop.</h2><p>Everything shown here is intended for purchase without a Habitat Assessment. Property-specific photographs and custom habitat portraits remain assessment add-ons under Services.</p></div>
-        <a className="text-link" href="/services/habitat-assessments#assessment-addons">See assessment add-ons <ArrowRight size={17} /></a>
+        <div><p className="kicker">Available to everyone</p><h2>This is the independent Shop.</h2><p>Everything shown here can be purchased independently of The Habitat Portrait. Property-specific photographs and custom habitat portraits remain Habitat Portrait add-ons under Services.</p></div>
+        <a className="text-link" href="/services/habitat-assessments#assessment-addons">See Habitat Portrait add-ons <ArrowRight size={17} /></a>
       </section>
 
       <section className="shop-plans">
         <div className="section-title-block"><p className="eyebrow"><span /> In development</p><h2>The first collections.</h2><p>The Shop is part of TWKH’s long view. These categories show the intended direction while the core editorial and service offerings take root.</p></div>
         <div className="shop-grid">
-          {shopPlans.map(({ icon: Icon, tag, title, text }, index) => <article key={title}><span className="product-number">0{index + 1}</span><Icon size={26} /><p className="product-tag">{tag}</p><h2>{title}</h2><p>{text}</p><span className="in-development">No assessment required · In development</span></article>)}
+          {shopPlans.map(({ icon: Icon, tag, title, text }, index) => <article key={title}><span className="product-number">0{index + 1}</span><Icon size={26} /><p className="product-tag">{tag}</p><h2>{title}</h2><p>{text}</p><span className="in-development">No Habitat Portrait required · In development</span></article>)}
         </div>
       </section>
 

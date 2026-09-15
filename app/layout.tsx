@@ -18,16 +18,16 @@ const sans = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL('https://wellkepthabitat.com'),
   title: 'The Well-Kept Habitat | Local Landscape Editorial & Services',
-  description: 'The Well-Kept Habitat explores cultivated landscapes through a local landscape editorial, consultations and evidence-informed habitat assessments in New England.',
+  description: 'The Well-Kept Habitat explores cultivated landscapes through local landscape editorial, consultations and The Habitat Portrait—an evidence-informed, current-state landscape assessment for homes, campuses, and other stewarded properties.',
   openGraph: {
     title: 'The Well-Kept Habitat',
-    description: 'Local Landscape Editorial & Habitat Services',
-    images: [{ url: '/og.jpg', width: 900, height: 472, alt: 'The Well-Kept Habitat — Local Landscape Editorial & Habitat Services' }],
+    description: 'Local Landscape Editorial, Consultations & The Habitat Portrait',
+    images: [{ url: '/og.jpg', width: 900, height: 472, alt: 'The Well-Kept Habitat — Local Landscape Editorial, Consultations & The Habitat Portrait' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'The Well-Kept Habitat',
-    description: 'Local Landscape Editorial & Habitat Services',
+    description: 'Local Landscape Editorial, Consultations & The Habitat Portrait',
     images: ['/og.jpg'],
   },
 };

@@ -3,8 +3,8 @@ import { ArrowLeft, ArrowRight, BookOpen, Camera, Check, LockKeyhole, Search } f
 import { PageHero, SiteFooter, SiteHeader } from '@/components/site-shell';
 
 export const metadata: Metadata = {
-  title: 'Habitat Assessments | The Well-Kept Habitat',
-  description: 'A diagnostic, evidence-informed portrait of your cultivated habitat, with structured observation, photography and a polished report.',
+  title: 'The Habitat Portrait | The Well-Kept Habitat',
+  description: 'An evidence-informed, current-state landscape assessment for homes, campuses, and other stewarded properties.',
 };
 
 export default function HabitatAssessmentsPage() {
@@ -12,12 +12,12 @@ export default function HabitatAssessmentsPage() {
     <main>
       <SiteHeader current="services" />
       <PageHero
-        eyebrow="Services · Habitat Assessments"
+        eyebrow="Services · The Habitat Portrait"
         title={<>See what is thriving.<br /><em>Understand what comes next.</em></>}
-        intro="A thoughtful current-state review designed to give you agency, not anxiety—and a beautiful record of the habitat already taking shape."
+        intro="An evidence-informed, current-state landscape assessment for homes, campuses, and other stewarded properties."
         dark
       >
-        <a className="button button-ivory" href="mailto:sc@ironarborllc.com?subject=Habitat%20Assessment%20interest">Ask about an assessment <ArrowRight size={17} /></a>
+        <a className="button button-ivory" href="mailto:sc@ironarborllc.com?subject=The%20Habitat%20Portrait%20interest">Ask about The Habitat Portrait <ArrowRight size={17} /></a>
       </PageHero>
 
       <section className="assessment-overview">
@@ -41,28 +41,28 @@ export default function HabitatAssessmentsPage() {
       </section>
 
       <section className="process-section">
-        <div className="section-title-block"><p className="eyebrow"><span /> The assessment experience</p><h2>From your story<br />to a useful portrait.</h2></div>
+        <div className="section-title-block"><p className="eyebrow"><span /> The Habitat Portrait experience</p><h2>From your story<br />to a useful portrait.</h2></div>
         <div className="process-grid">
           <article><span>01</span><h3>Tell us your story</h3><p>A short inquiry about what you love, what you have planted and what wildlife you notice.</p></article>
           <article><span>02</span><h3>Look closer together</h3><p>An in-person visit combines structured observation with documentary garden photography.</p></article>
-          <article><span>03</span><h3>Receive your habitat portrait</h3><p>A polished digital report captures findings, context, priorities and useful references.</p></article>
+          <article><span>03</span><h3>Receive your Habitat Portrait</h3><p>A polished digital report captures findings, context, priorities and useful references.</p></article>
         </div>
       </section>
 
       <section className="assessment-addons" id="assessment-addons">
         <div className="addon-heading">
-          <p className="eyebrow light"><span /> Assessment add-on products</p>
+          <p className="eyebrow light"><span /> Habitat Portrait add-on products</p>
           <h2>Made from<br />your own habitat.</h2>
-          <p>These optional products depend on the observation and photography completed during your Habitat Assessment. They are not available as standalone Shop purchases.</p>
+          <p>These optional products depend on the observation and photography completed during The Habitat Portrait. They are not available as standalone Shop purchases.</p>
         </div>
         <div className="addon-grid">
-          <article><LockKeyhole size={22} /><span>Requires a Habitat Assessment</span><Camera size={30} /><h3>Expanded habitat photography collection</h3><p>A curated set of property-specific photographs extending beyond the images included in your assessment report.</p></article>
-          <article><LockKeyhole size={22} /><span>Requires a Habitat Assessment</span><BookOpen size={30} /><h3>Custom printed habitat portrait</h3><p>A considered printed keepsake created from the story, findings and imagery of your own assessed landscape.</p></article>
+          <article><LockKeyhole size={22} /><span>Available with The Habitat Portrait</span><Camera size={30} /><h3>Expanded habitat photography collection</h3><p>A curated set of property-specific photographs extending beyond the images included in your Habitat Portrait report.</p></article>
+          <article><LockKeyhole size={22} /><span>Available with The Habitat Portrait</span><BookOpen size={30} /><h3>Custom printed habitat portrait</h3><p>A considered printed keepsake created from the story, findings and imagery of your own assessed landscape.</p></article>
         </div>
       </section>
 
       <section className="standalone-shop-note">
-        <div><p className="kicker">Looking for something without an assessment?</p><h2>Visit the independent Shop.</h2><p>Future field guides, books, editorial prints and other habitat-inspired objects will be available to everyone—no assessment required.</p></div>
+        <div><p className="kicker">Looking for something independent of The Habitat Portrait?</p><h2>Visit the independent Shop.</h2><p>Future field guides, books, editorial prints and other habitat-inspired objects will be available to everyone—no Habitat Portrait required.</p></div>
         <a className="button button-forest" href="/shop">Explore the Shop <ArrowRight size={17} /></a>
       </section>
 
