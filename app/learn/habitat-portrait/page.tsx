@@ -6,8 +6,8 @@ import { HabitatPortraitForm } from '@/components/habitat-portrait-form';
 import { SiteFooter, SiteHeader } from '@/components/site-shell';
 
 export const metadata: Metadata = {
-  title: 'The Habitat Portrait — Working Preview | The Well-Kept Habitat',
-  description: 'Download a complete working example of The Habitat Portrait, an evidence-informed current-state landscape assessment.',
+  title: 'The Habitat Portrait — Complete Example | The Well-Kept Habitat',
+  description: 'Download a complete example of The Habitat Portrait, an evidence-informed current-state landscape assessment.',
   robots: { index: true, follow: true },
 };
 
@@ -30,14 +30,14 @@ export default function HabitatPortraitPreviewPage() {
             <p className="eyebrow light"><span /> A complete example · 17 pages</p>
             <h1>See what a landscape reveals when you look closely.</h1>
             <p>
-              Explore a full working example of The Habitat Portrait—an evidence-informed environmental profile of a cultivated Longmeadow habitat.
+              Explore a complete example of The Habitat Portrait—an evidence-informed environmental profile of a cultivated Longmeadow habitat.
             </p>
             <div className="portrait-preview-features">
               <p><Search size={17} /> A structured five-part assessment framework</p>
               <p><Camera size={17} /> Observations, photographs and habitat signals</p>
               <p><FileText size={17} /> Findings, context and reference sources</p>
             </div>
-            <p className="portrait-working-note"><BookOpen size={15} /> This current draft is shared as a preview of the developing service.</p>
+            <p className="portrait-working-note"><BookOpen size={15} /> This complete example shows the structure and depth of The Habitat Portrait service.</p>
           </div>
         </div>
         <HabitatPortraitForm />

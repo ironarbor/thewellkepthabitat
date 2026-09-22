@@ -43,7 +43,7 @@ export default function HabitatAssessmentsPage() {
 
       <section className="portrait-service-preview">
         <div>
-          <p className="kicker">See a complete working example</p>
+          <p className="kicker">See a complete example</p>
           <h2>Visit a Habitat Portrait from Viscount Road.</h2>
           <p>Explore the assessment framework, observations, photography and findings before deciding whether the service fits your property.</p>
         </div>

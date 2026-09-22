@@ -72,7 +72,7 @@ export function HabitatPortraitForm() {
   return (
     <form className="portrait-access-form" onSubmit={handleSubmit}>
       <div>
-        <p className="eyebrow"><span /> Complimentary working preview</p>
+        <p className="eyebrow"><span /> Complimentary sample report</p>
         <h2>Receive the Viscount Road portrait.</h2>
         <p className="portrait-form-intro">Enter your email to unlock this complete 17-page example.</p>
       </div>
