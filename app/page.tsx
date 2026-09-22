@@ -33,15 +33,15 @@ export default function Home() {
       <section className="pillar-grid" aria-label="Primary TWKH offerings">
         <article className="pillar-card editorial-pillar">
           <BookOpen size={28} aria-hidden="true" />
-          <p className="kicker">Local Landscape Editorial</p>
-          <h2>Stories rooted<br />in place.</h2>
+          <p className="kicker">Stories rooted in place.</p>
+          <h2>Local Landscape<br />Editorial</h2>
           <p>A quarterly publication for Longmeadow homeowners—alive to the seasons, the people and the cultivated habitats close to home.</p>
           <a href="/editorial">Enter the editorial <ArrowRight size={17} /></a>
         </article>
         <article className="pillar-card services-pillar">
           <Search size={28} aria-hidden="true" />
-          <p className="kicker">Habitat Services</p>
-          <h2>Attention made<br />useful.</h2>
+          <p className="kicker">Attention made useful.</p>
+          <h2>Habitat<br />Services</h2>
           <p>Consultations and The Habitat Portrait turn careful observation into clear, manageable agency for people and organizations who steward property.</p>
           <a href="/services">Explore services <ArrowRight size={17} /></a>
         </article>
