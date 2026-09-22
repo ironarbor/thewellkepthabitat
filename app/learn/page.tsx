@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import { ArrowRight, BookOpen, MessageCircle, Sprout, Users } from 'lucide-react';
+import Link from 'next/link';
+import { ArrowRight, BookOpen, FileText, MessageCircle, Sprout, Users } from 'lucide-react';
 import { PageHero, SiteFooter, SiteHeader } from '@/components/site-shell';
 
 export const metadata: Metadata = {
@@ -18,6 +19,19 @@ export default function LearnPage() {
         image="/images/twkh-garden-hero.jpg"
         imageAlt="A layered garden supporting flowers, seedheads and wildlife"
       />
+
+      <section className="learning-featured-resource">
+        <div>
+          <p className="eyebrow"><span /> Available now · Complimentary report</p>
+          <FileText size={34} />
+        </div>
+        <div>
+          <p className="kicker">The Habitat Portrait · Viscount Road</p>
+          <h2>See the assessment framework in practice.</h2>
+          <p>Download a complete 17-page working example, with observations, photographs, findings and reference sources.</p>
+          <Link className="button button-forest" href="/learn/habitat-portrait">View the report preview <ArrowRight size={17} /></Link>
+        </div>
+      </section>
 
       <section className="learning-paths">
         <div className="section-title-block"><p className="eyebrow"><span /> Learning in community</p><h2>Notice more.<br />Understand more.<br />Care with confidence.</h2></div>

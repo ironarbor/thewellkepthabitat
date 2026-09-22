@@ -4,6 +4,20 @@
   "main": "vinext/server/fetch-handler",
   "compatibility_date": "2026-09-01",
   "compatibility_flags": ["nodejs_compat"],
+  "d1_databases": [
+    {
+      "binding": "LEADS_DB",
+      "database_name": "twkh-launch",
+      "database_id": "6374dd0c-91ca-44b2-a628-c1e6bf16a724",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "kv_namespaces": [
+    {
+      "binding": "PRIVATE_FILES",
+      "id": "051349aca3aa4f0aacdc18a3eb20dbe6"
+    }
+  ],
   "observability": {
     "enabled": true
   }
