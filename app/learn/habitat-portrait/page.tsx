@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
 import { ArrowLeft, BookOpen, Camera, FileText, Search } from 'lucide-react';
 import { HabitatPortraitForm } from '@/components/habitat-portrait-form';
 import { SiteFooter, SiteHeader } from '@/components/site-shell';
@@ -48,11 +47,11 @@ export default function HabitatPortraitPreviewPage() {
           <p className="kicker">A portrait of your own habitat</p>
           <h2>Ready to understand what is thriving—and what could come next?</h2>
         </div>
-        <Link href="/services/habitat-assessments">Explore The Habitat Portrait service</Link>
+        <a href="/services/habitat-assessments">Explore The Habitat Portrait service</a>
       </section>
 
       <section className="page-next-links">
-        <Link href="/learn"><ArrowLeft size={17} /> Back to Learning</Link>
+        <a href="/learn"><ArrowLeft size={17} /> Back to Learning</a>
       </section>
       <SiteFooter />
     </main>

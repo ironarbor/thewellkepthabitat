@@ -11,8 +11,8 @@ export default function Home() {
         <img className="hero-image" src="/images/twkh-garden-hero.jpg" alt="A layered New England habitat garden with coneflowers, seedheads and a monarch butterfly" />
         <div className="hero-shade" />
         <div className="hero-content">
-          <p className="eyebrow light"><span /> Cultivated landscapes · New England</p>
-          <h1>Elegance, arranged<br />in service of life.</h1>
+          <p className="eyebrow light"><span /> Cultivating charm, ecological stewardship, and curiosity.</p>
+          <h1>The Well-Kept<br />Habitat</h1>
           <p className="hero-intro">The Well-Kept Habitat explores what becomes possible when intentional elegance and ecological usefulness share the same ground.</p>
           <div className="hero-actions">
             <a className="button button-ivory" href="/editorial">Explore the editorial <BookOpen size={17} /></a>

@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { ArrowRight, BookOpen, FileText, MessageCircle, Sprout, Users } from 'lucide-react';
 import { PageHero, SiteFooter, SiteHeader } from '@/components/site-shell';
 
@@ -29,7 +28,7 @@ export default function LearnPage() {
           <p className="kicker">The Habitat Portrait · Viscount Road</p>
           <h2>See the assessment framework in practice.</h2>
           <p>Download a complete 17-page example, with observations, photographs, findings and reference sources.</p>
-          <Link className="button button-forest" href="/learn/habitat-portrait">View the report preview <ArrowRight size={17} /></Link>
+          <a className="button button-forest" href="/learn/habitat-portrait">View the report preview <ArrowRight size={17} /></a>
         </div>
       </section>
 

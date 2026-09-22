@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { ArrowLeft, ArrowRight, BookOpen, Camera, Check, LockKeyhole, Search } from 'lucide-react';
 import { PageHero, SiteFooter, SiteHeader } from '@/components/site-shell';
 
@@ -47,7 +46,7 @@ export default function HabitatAssessmentsPage() {
           <h2>Visit a Habitat Portrait from Viscount Road.</h2>
           <p>Explore the assessment framework, observations, photography and findings before deciding whether the service fits your property.</p>
         </div>
-        <Link className="button button-forest" href="/learn/habitat-portrait">View the report preview <ArrowRight size={17} /></Link>
+        <a className="button button-forest" href="/learn/habitat-portrait">View the report preview <ArrowRight size={17} /></a>
       </section>
 
       <section className="process-section">

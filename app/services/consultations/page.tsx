@@ -4,7 +4,7 @@ import { PageHero, SiteFooter, SiteHeader } from '@/components/site-shell';
 
 export const metadata: Metadata = {
   title: 'Habitat Consultations | The Well-Kept Habitat',
-  description: 'Focused habitat conversations for New England property stewards with a question, choice or next step to clarify.',
+  description: 'Focused habitat conversations for New England homeowners with a question, choice or next step to clarify.',
 };
 
 export default function ConsultationsPage() {
@@ -33,7 +33,7 @@ export default function ConsultationsPage() {
 
       <section className="consultation-compare">
         <article><MessageCircle size={28} /><p className="kicker">Consultation</p><h2>Focused</h2><p>A conversation organized around a defined question, decision or opportunity.</p></article>
-        <article><Search size={28} /><p className="kicker">The Habitat Portrait</p><h2>Comprehensive</h2><p>An evidence-informed, current-state landscape assessment for homes, campuses, and other stewarded properties.</p><a href="/services/habitat-assessments">Explore The Habitat Portrait <ArrowRight size={16} /></a></article>
+        <article><Search size={28} /><p className="kicker">The Habitat Portrait</p><h2>Comprehensive</h2><p>A structured property visit, documentation process and polished current-state report.</p><a href="/services/habitat-assessments">Explore The Habitat Portrait <ArrowRight size={16} /></a></article>
       </section>
 
       <section className="inquiry-section">
