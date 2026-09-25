@@ -16,7 +16,7 @@ const sans = Manrope({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://wellkepthabitat.com'),
+  metadataBase: new URL('https://thewellkepthabitat.com'),
   title: 'The Well-Kept Habitat | Local Landscape Editorial & Services',
   description: 'The Well-Kept Habitat explores cultivated landscapes through local landscape editorial, consultations and The Habitat Portrait—an evidence-informed, current-state landscape assessment for homes, campuses, and other stewarded properties.',
   openGraph: {
