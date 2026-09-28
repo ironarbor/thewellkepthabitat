@@ -10,6 +10,7 @@ export interface CatalogItem {
   description: string;
   details: string;
   priceCents: number | null;
+  editionReady: boolean;
 }
 
 const artworks = [
@@ -27,7 +28,7 @@ const artworks = [
     image: '/images/lavender-spires-photo.jpg',
     imageAlt: 'A sunlit garden filled with tall lavender flower spikes',
     description: 'A summer stand of lavender flower spikes in the garden.',
-    details: 'A second photograph in the educational artwork series. Species notes, digital print sizes, and final price are in preparation.',
+    details: 'A second photograph in the educational artwork series. Species notes and downloadable print files are in preparation.',
   },
   {
     id: 'gold-and-ivory',
@@ -35,7 +36,7 @@ const artworks = [
     image: '/images/gold-and-ivory-photo.jpg',
     imageAlt: 'Yellow and white flower clusters against a dark garden background',
     description: 'Yellow and white blooms gathered in a quiet garden scene.',
-    details: 'A third photograph in the educational artwork series. Species notes, digital print sizes, and final price are in preparation.',
+    details: 'A third photograph in the educational artwork series. Species notes and downloadable print files are in preparation.',
   },
 ] as const;
 
@@ -49,7 +50,8 @@ export const catalog: CatalogItem[] = artworks.flatMap((art) => [
     imageAlt: art.imageAlt,
     description: art.description,
     details: art.details,
-    priceCents: art.id === 'visit-to-the-hyssop' ? 400 : null,
+    priceCents: 400,
+    editionReady: art.id === 'visit-to-the-hyssop',
   },
   {
     id: `${art.id}-print`,
@@ -61,5 +63,6 @@ export const catalog: CatalogItem[] = artworks.flatMap((art) => [
     description: art.description,
     details: 'A physical print of this photograph is planned. Paper, size, print price, production method, and shipping charge will be confirmed before orders open.',
     priceCents: null,
+    editionReady: false,
   },
 ]);

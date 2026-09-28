@@ -50,6 +50,7 @@ export function ShopCatalog() {
   }), [filter, query]);
   const cartItems = cart.map(id => catalog.find(item => item.id === id)).filter((item): item is CatalogItem => Boolean(item));
   const hasPendingItems = cartItems.some(item => item.priceCents === null);
+  const hasUnfinishedEditions = cartItems.some(item => !item.editionReady);
   const canCheckout = checkoutAvailable && cart.length === 1 && cart[0] === 'visit-to-the-hyssop-digital';
   const subtotal = cartItems.reduce((sum, item) => sum + (item.priceCents ?? 0), 0);
 
@@ -94,7 +95,7 @@ export function ShopCatalog() {
       {results.length ? <div className="catalog-grid">{results.map(item => <article className="catalog-card" key={item.id}>
         <button type="button" className="catalog-card-image" onClick={() => setSelected(item)} aria-label={`View ${item.title}, ${item.format === 'digital' ? 'digital download' : 'physical print'}`}><img src={item.image} alt={item.imageAlt} loading="lazy" /></button>
         <div className="catalog-card-body">
-          <p className="catalog-card-format">{item.format === 'digital' ? <Download size={14} aria-hidden="true" /> : <Truck size={14} aria-hidden="true" />}{item.format === 'digital' ? 'Digital download' : 'Physical print'} <span>· {item.priceCents === null ? 'In preparation' : 'First edition'}</span></p>
+          <p className="catalog-card-format">{item.format === 'digital' ? <Download size={14} aria-hidden="true" /> : <Truck size={14} aria-hidden="true" />}{item.format === 'digital' ? 'Digital download' : 'Physical print'} <span>· {item.editionReady ? 'First edition' : 'In preparation'}</span></p>
           <h2>{item.title}</h2>
           <p className="catalog-card-description">{item.description}</p>
           <div className="catalog-card-bottom"><p className="catalog-card-price">{item.priceCents !== null ? <>{money(item.priceCents)} <small>before tax</small></> : <span>Price to come</span>}</p><button type="button" onClick={() => setSelected(item)}>View details <ArrowRight size={15} aria-hidden="true" /></button></div>
@@ -108,15 +109,15 @@ export function ShopCatalog() {
       <div className="catalog-detail-copy"><p className="kicker">{selected.format === 'digital' ? 'Digital download' : 'Physical print'} · Educational artwork</p><h2 id="catalog-detail-title">{selected.title}</h2><p>{selected.details}</p>
         {selected.format === 'print' && <p className="catalog-detail-note">Print price and shipping cost will be shown before checkout when physical orders open.</p>}
         <p className="catalog-detail-price">{selected.priceCents !== null ? `${money(selected.priceCents)} before tax` : 'Price in preparation'}</p>
-        <button type="button" className="catalog-primary-button" onClick={() => addToCart(selected)}>{selected.priceCents === null ? 'Save to preview cart' : 'Add to cart'}</button>
-        <p className="catalog-detail-note">{selected.format === 'digital' ? 'Digital files are for personal use; nothing will be shipped.' : 'Physical print orders are not open yet.'}</p>
+        <button type="button" className="catalog-primary-button" onClick={() => addToCart(selected)}>{selected.editionReady ? 'Add to cart' : 'Save to preview cart'}</button>
+        <p className="catalog-detail-note">{selected.format === 'digital' ? selected.editionReady ? 'Digital files are for personal use; nothing will be shipped.' : 'The download files and field note are being prepared; orders are not open yet.' : 'Physical print orders are not open yet.'}</p>
       </div>
     </section></div>}
 
     {cartOpen && <div className="catalog-overlay cart-overlay" onMouseDown={event => { if (event.target === event.currentTarget) setCartOpen(false); }}><aside className="catalog-cart" role="dialog" aria-modal="true" aria-labelledby="catalog-cart-title">
       <header><div><p className="kicker">Your selection</p><h2 id="catalog-cart-title">Shopping cart <span>({cart.length})</span></h2></div><button type="button" onClick={() => setCartOpen(false)} aria-label="Close cart"><X size={22} /></button></header>
       {cartItems.length ? <><div className="catalog-cart-items">{cartItems.map(item => <div className="catalog-cart-item" key={item.id}><img src={item.image} alt="" /><div><strong>{item.title}</strong><span>{item.format === 'digital' ? 'Digital download' : 'Physical print'}</span><span>{item.priceCents !== null ? money(item.priceCents) : 'Price pending'}</span><button type="button" onClick={() => setCart(current => current.filter(id => id !== item.id))}>Remove</button></div></div>)}</div>
-        <div className="catalog-cart-summary"><p><span>Priced items</span><strong>{money(subtotal)}</strong></p>{hasPendingItems && <p className="catalog-cart-pending">Additional item prices are pending. Shipping for physical prints will be shown before payment.</p>}
+        <div className="catalog-cart-summary"><p><span>Priced items</span><strong>{money(subtotal)}</strong></p>{hasUnfinishedEditions && <p className="catalog-cart-pending">Some editions are still in preparation. This cart cannot be checked out until their files or print fulfillment are ready.</p>}{hasPendingItems && <p className="catalog-cart-pending">Additional item prices are pending. Shipping for physical prints will be shown before payment.</p>}
           <button className="catalog-primary-button" type="button" disabled={!canCheckout || busy} onClick={startCheckout}>{busy ? 'Opening checkout…' : canCheckout ? 'Continue to secure checkout' : 'Checkout opening soon'}</button>
           <p className="catalog-cart-note">{canCheckout ? 'Final total is shown in Stripe Checkout before payment.' : 'This is a preview cart. No payment will be taken.'}</p><p role="status" aria-live="polite">{message}</p>
         </div></> : <div className="catalog-cart-empty"><ShoppingBag size={32} aria-hidden="true" /><p>Your cart is empty.</p><button type="button" onClick={() => setCartOpen(false)}>Browse artwork</button></div>}
