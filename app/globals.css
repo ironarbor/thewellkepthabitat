@@ -704,7 +704,7 @@ footer { align-items: start; background: #e7e4da; display: grid; gap: 5vw; grid-
 .catalog-intro { max-width: 1360px; margin: auto; padding: 70px 28px 45px; }
 .catalog-intro .eyebrow { margin-bottom: 20px; }
 .catalog-intro > div { align-items: end; display: grid; gap: 45px; grid-template-columns: 1.1fr .9fr; }
-.catalog-intro h1 { font-size: clamp(48px, 5.5vw, 79px); font-weight: 400; letter-spacing: -.045em; line-height: .98; margin: 0; }
+.catalog-intro h1 { font-size: clamp(42px, 4.6vw, 62px); font-weight: 400; letter-spacing: -.045em; line-height: 1.03; margin: 0; }
 .catalog-intro > div p { color: var(--body-muted); font-family: var(--font-display), Georgia, serif; font-size: 20px; line-height: 1.45; margin: 0 0 3px; max-width: 490px; }
 .catalog-toolbar { align-items: center; border-block: 1px solid var(--line); display: flex; gap: 22px; justify-content: space-between; margin: 0 auto; max-width: 1304px; padding: 14px 0; }
 .catalog-filters, .catalog-actions { align-items: center; display: flex; gap: 7px; }
