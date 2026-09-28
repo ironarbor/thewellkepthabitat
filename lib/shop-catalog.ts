@@ -24,10 +24,10 @@ const artworks = [
   },
   {
     id: 'lavender-spires',
-    title: 'Lavender Spires',
+    title: 'Agastache',
     image: '/images/lavender-spires-photo.jpg',
-    imageAlt: 'A sunlit garden filled with tall lavender flower spikes',
-    description: 'A summer stand of lavender flower spikes in the garden.',
+    imageAlt: 'A sunlit garden filled with tall Agastache flower spikes',
+    description: 'A summer stand of Agastache in the garden.',
     details: 'A second photograph in the educational artwork series. Species notes and downloadable print files are in preparation.',
   },
   {
