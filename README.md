@@ -44,14 +44,14 @@ The redirects from `twkhabitat.com` and `wellkepthabitat.com` are configured in 
 
 ## Digital artwork shop
 
-The shop supports one downloadable artwork, **A Visit to the Hyssop**. The public image is a reduced preview; the ZIP sold to customers must be uploaded to the existing private `PRIVATE_FILES` KV namespace under `shop/visit-to-the-hyssop-v1.zip`. Never commit the purchased files or Stripe credentials to this public repository.
+The shop supports one downloadable artwork, **A Visit to the Hyssop**, at **$4.00 USD before tax**. The photograph is identified as a female worker common eastern bumble bee (*Bombus impatiens*) visiting anise hyssop / Blue Fortune hyssop (*Agastache* ‘Blue Fortune’). The public image is a reduced preview; the ZIP sold to customers must be uploaded to the existing private `PRIVATE_FILES` KV namespace under `shop/visit-to-the-hyssop-v1.zip`. Never commit the purchased files or Stripe credentials to this public repository.
 
 Checkout remains closed until every part of fulfillment is ready. Configure these Worker secrets/variables in a Stripe sandbox first:
 
 | Setting | Purpose |
 | --- | --- |
 | `STRIPE_SECRET_KEY` | Rotated, restricted Stripe API key with Checkout Session and Price read permissions |
-| `STRIPE_PRICE_ID` | One-time USD price for the digital edition, from the same Stripe account as the key |
+| `STRIPE_PRICE_ID` | One-time USD price for the digital edition, from the same Stripe account as the key. Sandbox: `price_1UKgiKGzbaYKBAS2595JuE1F` ($4.00, tax exclusive). Use a separate live Price ID for launch. |
 | `STRIPE_WEBHOOK_SECRET` | Signing secret for the webhook at `/api/shop/webhook` |
 | `RESEND_API_KEY` | Transactional delivery email |
 | `SHOP_FROM_EMAIL` | Verified sender address for delivery email |
@@ -64,7 +64,7 @@ Before enabling sales:
 1. Confirm the price and account; the connected ChatGPT Stripe sandbox and any separately supplied API key must reference the same account. Replace any key pasted into chat with a fresh restricted key stored in Worker secrets.
 2. Upload the final ZIP to private KV; check `/api/shop/product` reports the intended price and `available: true` after configuration. Do not set `SHOP_ENABLED=1` until the file, price, and email sender are ready.
 3. Configure the verified sender and webhook endpoint. Apply the D1 migration. Test a successful sandbox payment, the delivery email, download, duplicate webhook delivery, and a failed or delayed payment. Confirm unpaid sessions never gain access.
-4. Confirm tax registrations and the appropriate digital-art product tax code before enabling Stripe automatic tax. This integration currently does **not** set `automatic_tax`. A Stripe receipt does not replace the separate artwork delivery email.
+4. Confirm tax registrations and the appropriate digital-art product tax code before enabling Stripe automatic tax. The $4.00 Price is tax exclusive, but that alone does not calculate or collect tax. This integration currently does **not** set `automatic_tax`, and the connected sandbox Tax settings remain pending. A Stripe receipt does not replace the separate artwork delivery email.
 5. Recheck the live Stripe account, live price, live webhook secret, Worker bindings, private ZIP, and live email sender independently before switching from sandbox to live sales.
 
 The first ZIP contains 4 × 6 and 5 × 7 inch landscape JPEGs, a one-page field note, and personal-use instructions. Larger sizes need the original 6000 × 4000 photograph, since the supplied working image is 2048 × 1365 pixels. Physical prints are only editorial copy for now; no shipping or physical-product charge is active.

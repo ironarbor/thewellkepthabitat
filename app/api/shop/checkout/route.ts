@@ -1,4 +1,4 @@
-import { checkoutReady, PRIVATE_FILE_KEY, PRODUCT_SLUG, shopEnv, siteUrl, stripeClient } from '@/lib/shop';
+import { checkoutReady, PRIVATE_FILE_KEY, PRODUCT_PRICE_CENTS, PRODUCT_SLUG, shopEnv, siteUrl, stripeClient } from '@/lib/shop';
 
 export const runtime = 'edge';
 
@@ -18,7 +18,7 @@ export async function POST(request: Request) {
     if (!file) return Response.json({ error: 'This artwork is temporarily unavailable.' }, { status: 503 });
     const stripe = stripeClient(config.STRIPE_SECRET_KEY!);
     const price = await stripe.prices.retrieve(config.STRIPE_PRICE_ID!);
-    if (!price.active || price.type !== 'one_time' || price.unit_amount === null || price.currency !== 'usd') {
+    if (!price.active || price.type !== 'one_time' || price.unit_amount !== PRODUCT_PRICE_CENTS || price.currency !== 'usd' || price.tax_behavior !== 'exclusive') {
       return Response.json({ error: 'This artwork is temporarily unavailable.' }, { status: 503 });
     }
     const letters = Array.from(crypto.getRandomValues(new Uint8Array(8)), n => String.fromCharCode(97 + n % 26)).join('');

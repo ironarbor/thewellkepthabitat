@@ -721,6 +721,8 @@ footer { align-items: start; background: #e7e4da; display: grid; gap: 5vw; grid-
 .art-product-format strong, .art-product-format span { display: block; font-size: 15px; }
 .art-product-format strong { color: var(--forest-deep); }
 .art-product-format span { color: var(--body-muted); margin-top: 5px; }
+.art-product-price { color: var(--forest-deep); font-family: var(--font-display), Georgia, serif; font-size: 30px; margin: 0 0 14px; }
+.art-product-price span { color: var(--body-muted); font-family: var(--font-body), Arial, sans-serif; font-size: 14px; }
 .art-buy-button { background: var(--forest); border: 1px solid var(--forest); color: white; cursor: pointer; font: inherit; font-size: 14px; font-weight: 600; min-height: 54px; padding: 13px 22px; width: 100%; }
 .art-buy-button:hover:not(:disabled) { background: var(--forest-deep); }
 .art-buy-button:disabled { cursor: wait; opacity: .65; }

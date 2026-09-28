@@ -2,6 +2,7 @@ import Stripe from 'stripe';
 import { env } from 'cloudflare:workers';
 
 export const PRODUCT_SLUG = 'visit-to-the-hyssop';
+export const PRODUCT_PRICE_CENTS = 400;
 export const PRIVATE_FILE_KEY = 'shop/visit-to-the-hyssop-v1.zip';
 const SITE_URL = 'https://thewellkepthabitat.com';
 

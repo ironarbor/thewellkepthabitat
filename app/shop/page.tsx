@@ -20,17 +20,18 @@ export default function ShopPage() {
 
       <section className="art-product" aria-labelledby="art-product-title">
         <div className="art-product-image">
-          <img src="/images/bumblebee-blue-fortune-preview.jpg" alt="A bumble bee with orange pollen on its hind leg visits lavender Agastache flowers" />
+          <img src="/images/bumblebee-blue-fortune-preview.jpg" alt="A common eastern bumble bee worker with orange pollen on her hind leg visits lavender Blue Fortune hyssop flowers" />
           <span>Photographed by Shekeyla Sandore</span>
         </div>
         <div className="art-product-details">
           <p className="kicker">01 / Educational artwork · Digital edition</p>
           <h2 id="art-product-title">A Visit to the Hyssop</h2>
-          <p className="art-product-lead">A bumble bee pauses at the lavender spires of <i>Agastache</i> ‘Blue Fortune’, its pollen basket carrying the bright trace of another visit.</p>
-          <div className="art-product-observation"><Flower2 size={21} aria-hidden="true" /><p><strong>A closer look</strong><br />The orange patch on the bee’s hind leg is a gathered load of pollen. ‘Blue Fortune’ is a cultivated hybrid in the mint family; it should not be confused with the species commonly called anise hyssop, <i>Agastache foeniculum</i>.</p></div>
+          <p className="art-product-lead">A female worker common eastern bumble bee (<i>Bombus impatiens</i>) visits the lavender spires of anise hyssop / Blue Fortune hyssop (<i>Agastache</i> ‘Blue Fortune’).</p>
+          <div className="art-product-observation"><Flower2 size={21} aria-hidden="true" /><p><strong>A closer look</strong><br />The bright orange load on her hind leg is pollen packed into a pollen basket for her colony. ‘Blue Fortune’ is a cultivated <i>Agastache</i> hybrid in the mint family (Lamiaceae), distinct from the species <i>A. foeniculum</i>, which also goes by anise hyssop.</p></div>
           <div className="art-product-format"><Download size={20} aria-hidden="true" /><div><strong>Instant download</strong><span>Landscape photograph in 4 × 6 and 5 × 7 inch print sizes, plus a one-page field note and printing guide. For personal display or a physical gift.</span></div></div>
+          <p className="art-product-price">$4.00 <span>before tax</span></p>
           <ShopCheckoutButton />
-          <p className="art-product-fine-print">Digital files only; no physical print will be shipped. Please keep the files for your own use. The launch price will appear here before sales open.</p>
+          <p className="art-product-fine-print">Digital files only; no physical print will be shipped. Please keep the files for your own use. Sales are not open yet.</p>
         </div>
       </section>
 
