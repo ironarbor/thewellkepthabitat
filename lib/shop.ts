@@ -3,6 +3,7 @@ import { env } from 'cloudflare:workers';
 
 export const PRODUCT_SLUG = 'visit-to-the-hyssop';
 export const PRODUCT_PRICE_CENTS = 400;
+export const TWKH_STRIPE_ACCOUNT_ID = 'acct_1UKfgM2fAALQO8uD';
 export const PRIVATE_FILE_KEY = 'shop/visit-to-the-hyssop-v1.zip';
 const SITE_URL = 'https://thewellkepthabitat.com';
 
@@ -26,6 +27,11 @@ export function stripeClient(key: string) {
     apiVersion: '2026-08-26.dahlia',
     httpClient: Stripe.createFetchHttpClient(),
   });
+}
+
+export async function confirmStripeAccount(stripe: Stripe) {
+  const account = await stripe.accounts.retrieveCurrent();
+  return account.id === TWKH_STRIPE_ACCOUNT_ID;
 }
 
 export function checkoutReady(config: ShopEnv) {

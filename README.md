@@ -44,27 +44,29 @@ The redirects from `twkhabitat.com` and `wellkepthabitat.com` are configured in 
 
 ## Digital artwork shop
 
-The shop supports one downloadable artwork, **A Visit to the Hyssop**, at **$4.00 USD before tax**. The photograph is identified as a female worker common eastern bumble bee (*Bombus impatiens*) visiting anise hyssop / Blue Fortune hyssop (*Agastache* ‘Blue Fortune’). The public image is a reduced preview; the ZIP sold to customers must be uploaded to the existing private `PRIVATE_FILES` KV namespace under `shop/visit-to-the-hyssop-v1.zip`. Never commit the purchased files or Stripe credentials to this public repository.
+The shop catalog has three photographs, each in digital and physical-print formats. Search, format filters, item details, and a preview cart work before launch. Only **A Visit to the Hyssop** has a confirmed price: **$4.00 USD before tax** for the digital edition. The other two digital editions are placeholders until their field notes, files, and prices are approved. All three physical prints are placeholders until paper, size, production, prices, and shipping charges are decided. The cart cannot checkout with placeholders. It can checkout only the first digital edition when the account and fulfillment gate below is enabled.
+
+The first photograph is identified as a female worker common eastern bumble bee (*Bombus impatiens*) visiting anise hyssop / Blue Fortune hyssop (*Agastache* ‘Blue Fortune’). The other two photographs use descriptive working titles pending species review. Public images are previews; the purchased ZIP must be uploaded to the existing private `PRIVATE_FILES` KV namespace under `shop/visit-to-the-hyssop-v1.zip`. Never commit purchased files or Stripe credentials to this public repository.
 
 Checkout remains closed until every part of fulfillment is ready. Configure these Worker secrets/variables in a Stripe sandbox first:
 
 | Setting | Purpose |
 | --- | --- |
-| `STRIPE_SECRET_KEY` | Rotated, restricted Stripe API key with Checkout Session and Price read permissions |
-| `STRIPE_PRICE_ID` | One-time USD price for the digital edition, from the same Stripe account as the key. Sandbox: `price_1UKgiKGzbaYKBAS2595JuE1F` ($4.00, tax exclusive). Use a separate live Price ID for launch. |
+| `STRIPE_SECRET_KEY` | TWKH account test key during sandbox testing; use a fresh restricted key with Account read, Price read, and Checkout Session write permissions. Rotate the previously shared test secret. Store as a Cloudflare Worker Secret. |
+| `STRIPE_PRICE_ID` | One-time USD $4.00 tax-exclusive Price from TWKH account `acct_1UKfgM2fAALQO8uD`; create distinct test and live prices. A Price from the Iron Arbor sandbox will be rejected. |
 | `STRIPE_WEBHOOK_SECRET` | Signing secret for the webhook at `/api/shop/webhook` |
 | `RESEND_API_KEY` | Transactional delivery email |
-| `SHOP_FROM_EMAIL` | Verified sender address for delivery email |
+| `SHOP_FROM_EMAIL` | Verified sender address for delivery email; proposed `admin@twkhabitat.com` after sending-domain verification |
 | `SHOP_ENABLED` | Set to `1` only after all checks below pass |
 
 Apply `migrations/0002_create_shop_orders.sql` to the existing `LEADS_DB` D1 database. Register the Stripe webhook for `checkout.session.completed`, `checkout.session.async_payment_succeeded`, `checkout.session.async_payment_failed`, and `charge.refunded`. The handler verifies signatures, requires `payment_status=paid`, stores one order per Checkout Session, and retries email delivery idempotently. The success page reads only fulfilled orders; a private KV file is served only with an unexpired paid-order token. The download link lasts 90 days.
 
 Before enabling sales:
 
-1. Confirm the price and account; the connected ChatGPT Stripe sandbox and any separately supplied API key must reference the same account. Replace any key pasted into chat with a fresh restricted key stored in Worker secrets.
+1. Connect the TWKH Stripe account. The currently connected ChatGPT Stripe sandbox belongs to Iron Arbor Holdings LLC (`acct_1TimBzGzbaYKBAS2`); its earlier $4 test product and Price have been archived and must never be used here. The Worker independently retrieves the Stripe account and requires `acct_1UKfgM2fAALQO8uD` before exposing or opening Checkout. Create a $4 tax-exclusive one-time Price in the TWKH sandbox, and later a separate live Price. Rotate the test secret pasted into chat; do not paste any replacement key into chat or commit it.
 2. Upload the final ZIP to private KV; check `/api/shop/product` reports the intended price and `available: true` after configuration. Do not set `SHOP_ENABLED=1` until the file, price, and email sender are ready.
 3. Configure the verified sender and webhook endpoint. Apply the D1 migration. Test a successful sandbox payment, the delivery email, download, duplicate webhook delivery, and a failed or delayed payment. Confirm unpaid sessions never gain access.
-4. Confirm tax registrations and the appropriate digital-art product tax code before enabling Stripe automatic tax. The $4.00 Price is tax exclusive, but that alone does not calculate or collect tax. This integration currently does **not** set `automatic_tax`, and the connected sandbox Tax settings remain pending. A Stripe receipt does not replace the separate artwork delivery email.
+4. Confirm where Iron Arbor Holdings LLC is registered to collect sales tax, then configure the TWKH account's tax settings and appropriate digital-art product tax code. A DBA, Massachusetts address, and EIN do not establish tax-registration status. A tax-exclusive Price alone does not calculate or collect tax. This integration currently does **not** set `automatic_tax`. A Stripe receipt does not replace the separate artwork delivery email.
 5. Recheck the live Stripe account, live price, live webhook secret, Worker bindings, private ZIP, and live email sender independently before switching from sandbox to live sales.
 
-The first ZIP contains 4 × 6 and 5 × 7 inch landscape JPEGs, a one-page field note, and personal-use instructions. Larger sizes need the original 6000 × 4000 photograph, since the supplied working image is 2048 × 1365 pixels. Physical prints are only editorial copy for now; no shipping or physical-product charge is active.
+The first ZIP contains 4 × 6 and 5 × 7 inch landscape JPEGs, a one-page field note, and personal-use instructions. The two additional supplied JPEGs are 2048 × 1365 previews; their NEF originals are retained outside the public repo. Larger print sizes need appropriately exported originals. Physical print checkout must include a verified shipping address, explicit shipping option/cost shown before payment, fulfillment method, and refund/return policy. No shipping or physical-product charge is active.

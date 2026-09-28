@@ -1,4 +1,4 @@
-import { checkoutReady, PRIVATE_FILE_KEY, PRODUCT_PRICE_CENTS, PRODUCT_SLUG, shopEnv, siteUrl, stripeClient } from '@/lib/shop';
+import { checkoutReady, confirmStripeAccount, PRIVATE_FILE_KEY, PRODUCT_PRICE_CENTS, PRODUCT_SLUG, shopEnv, siteUrl, stripeClient } from '@/lib/shop';
 
 export const runtime = 'edge';
 
@@ -17,6 +17,7 @@ export async function POST(request: Request) {
     const file = await config.PRIVATE_FILES.get(PRIVATE_FILE_KEY, 'stream');
     if (!file) return Response.json({ error: 'This artwork is temporarily unavailable.' }, { status: 503 });
     const stripe = stripeClient(config.STRIPE_SECRET_KEY!);
+    if (!await confirmStripeAccount(stripe)) return Response.json({ error: 'This artwork is temporarily unavailable.' }, { status: 503 });
     const price = await stripe.prices.retrieve(config.STRIPE_PRICE_ID!);
     if (!price.active || price.type !== 'one_time' || price.unit_amount !== PRODUCT_PRICE_CENTS || price.currency !== 'usd' || price.tax_behavior !== 'exclusive') {
       return Response.json({ error: 'This artwork is temporarily unavailable.' }, { status: 503 });

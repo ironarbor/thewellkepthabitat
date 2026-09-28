@@ -1,46 +1,21 @@
 import type { Metadata } from 'next';
-import { ArrowRight, Download, Flower2, Package } from 'lucide-react';
 import { SiteFooter, SiteHeader } from '@/components/site-shell';
-import { ShopCheckoutButton } from '@/components/shop-checkout-button';
+import { ShopCatalog } from '@/components/shop-catalog';
 
 export const metadata: Metadata = {
   title: 'Educational Artwork | The Well-Kept Habitat',
-  description: 'Photographic artwork that pairs the beauty of a garden with a closer look at the life within it.',
+  description: 'Shop photographic artwork inspired by beautiful, ecologically useful gardens. Digital editions and physical prints.',
 };
 
 export default function ShopPage() {
-  return (
-    <main>
-      <SiteHeader current="shop" />
-      <section className="art-shop-intro">
-        <p className="eyebrow"><span /> The Well-Kept Habitat · Shop</p>
-        <h1>Art for <em>looking closer.</em></h1>
-        <p>Photographs of the encounters that make a garden feel alive. Each digital edition pairs an image for the wall with a brief field note about what you are seeing.</p>
-      </section>
-
-      <section className="art-product" aria-labelledby="art-product-title">
-        <div className="art-product-image">
-          <img src="/images/bumblebee-blue-fortune-preview.jpg" alt="A common eastern bumble bee worker with orange pollen on her hind leg visits lavender Blue Fortune hyssop flowers" />
-          <span>Photographed by Shekeyla Sandore</span>
-        </div>
-        <div className="art-product-details">
-          <p className="kicker">01 / Educational artwork · Digital edition</p>
-          <h2 id="art-product-title">A Visit to the Hyssop</h2>
-          <p className="art-product-lead">A female worker common eastern bumble bee (<i>Bombus impatiens</i>) visits the lavender spires of anise hyssop / Blue Fortune hyssop (<i>Agastache</i> ‘Blue Fortune’).</p>
-          <div className="art-product-observation"><Flower2 size={21} aria-hidden="true" /><p><strong>A closer look</strong><br />The bright orange load on her hind leg is pollen packed into a pollen basket for her colony. ‘Blue Fortune’ is a cultivated <i>Agastache</i> hybrid in the mint family (Lamiaceae), distinct from the species <i>A. foeniculum</i>, which also goes by anise hyssop.</p></div>
-          <div className="art-product-format"><Download size={20} aria-hidden="true" /><div><strong>Instant download</strong><span>Landscape photograph in 4 × 6 and 5 × 7 inch print sizes, plus a one-page field note and printing guide. For personal display or a physical gift.</span></div></div>
-          <p className="art-product-price">$4.00 <span>before tax</span></p>
-          <ShopCheckoutButton />
-          <p className="art-product-fine-print">Digital files only; no physical print will be shipped. Please keep the files for your own use. Sales are not open yet.</p>
-        </div>
-      </section>
-
-      <section className="art-shop-next">
-        <div><p className="kicker">Coming next</p><h2>Made for the wall, sent to your door.</h2><p>Physical fine-art prints are being sampled. Paper, dimensions, packaging, and delivery details will be published once the finished work has been reviewed.</p></div>
-        <Package size={38} aria-hidden="true" />
-      </section>
-      <section className="art-shop-source"><p><strong>Field-note references</strong> · <a href="https://plants.ces.ncsu.edu/plants/agastache-blue-fortune/" target="_blank" rel="noreferrer">NC State Extension on ‘Blue Fortune’ <ArrowRight size={13} aria-hidden="true" /></a> · <a href="https://extension.umn.edu/gardening-minnesota/edible-flowers" target="_blank" rel="noreferrer">UMN Extension on anise hyssop <ArrowRight size={13} aria-hidden="true" /></a></p></section>
-      <SiteFooter />
-    </main>
-  );
+  return <main>
+    <SiteHeader current="shop" />
+    <section className="catalog-intro">
+      <p className="eyebrow"><span /> The Well-Kept Habitat · Shop</p>
+      <div><h1>Art for looking closer.</h1><p>Photographic studies of the garden, offered as downloadable artwork and planned physical prints. Choose a photograph, then the format that belongs in your space.</p></div>
+    </section>
+    <ShopCatalog />
+    <section className="catalog-about"><p className="kicker">Good to know</p><div><h2>Beautiful to live with.<br /><em>Useful to learn from.</em></h2><p>The first digital edition includes a field note alongside two print-ready file sizes. The other editions are being prepared. Physical prints will open after paper, sizes, production, and shipping costs are confirmed.</p></div></section>
+    <SiteFooter />
+  </main>;
 }

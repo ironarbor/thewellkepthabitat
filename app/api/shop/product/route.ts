@@ -1,4 +1,4 @@
-import { checkoutReady, PRIVATE_FILE_KEY, PRODUCT_PRICE_CENTS, shopEnv, stripeClient } from '@/lib/shop';
+import { checkoutReady, confirmStripeAccount, PRIVATE_FILE_KEY, PRODUCT_PRICE_CENTS, shopEnv, stripeClient } from '@/lib/shop';
 
 export const runtime = 'edge';
 
@@ -8,7 +8,9 @@ export async function GET() {
   try {
     const file = await config.PRIVATE_FILES.get(PRIVATE_FILE_KEY, 'stream');
     if (!file) return Response.json({ available: false }, { headers: { 'Cache-Control': 'no-store' } });
-    const price = await stripeClient(config.STRIPE_SECRET_KEY!).prices.retrieve(config.STRIPE_PRICE_ID!);
+    const stripe = stripeClient(config.STRIPE_SECRET_KEY!);
+    if (!await confirmStripeAccount(stripe)) return Response.json({ available: false }, { headers: { 'Cache-Control': 'no-store' } });
+    const price = await stripe.prices.retrieve(config.STRIPE_PRICE_ID!);
     if (!price.active || price.type !== 'one_time' || price.unit_amount !== PRODUCT_PRICE_CENTS || price.currency !== 'usd' || price.tax_behavior !== 'exclusive') {
       return Response.json({ available: false }, { headers: { 'Cache-Control': 'no-store' } });
     }
