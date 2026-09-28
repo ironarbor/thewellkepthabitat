@@ -699,3 +699,56 @@ footer { align-items: start; background: #e7e4da; display: grid; gap: 5vw; grid-
   .portrait-form-row { grid-template-columns: 1fr; gap: 0; }
   .portrait-next-step { padding: 75px 24px; }
 }
+
+/* The Shop: photography is the primary product surface. */
+.art-shop-intro { max-width: 1480px; margin: auto; padding: clamp(65px, 8vw, 125px) 6vw 55px; }
+.art-shop-intro h1 { font-size: clamp(56px, 7vw, 108px); font-weight: 400; letter-spacing: -.045em; line-height: .94; max-width: 1000px; margin-bottom: 24px; }
+.art-shop-intro h1 em { color: #607b6d; font-weight: 400; }
+.art-shop-intro > p:last-child { color: var(--body-muted); font-family: var(--font-display), Georgia, serif; font-size: clamp(20px, 2vw, 26px); line-height: 1.35; max-width: 680px; }
+.art-product { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(390px, .88fr); max-width: 1480px; margin: 0 auto 100px; padding: 0 6vw; }
+.art-product-image { background: var(--forest-deep); display: flex; flex-direction: column; min-height: 670px; }
+.art-product-image img { width: 100%; flex: 1; height: 0; min-height: 0; object-fit: cover; object-position: 57% center; }
+.art-product-image span { color: rgba(247,244,236,.8); font-size: 12px; letter-spacing: .05em; padding: 15px 22px; }
+.art-product-details { background: var(--paper); padding: clamp(36px, 5vw, 76px); }
+.art-product-details .kicker { margin-bottom: 28px; }
+.art-product-details h2 { font-size: clamp(47px, 4.2vw, 70px); font-weight: 400; line-height: .99; letter-spacing: -.04em; margin-bottom: 28px; }
+.art-product-lead { color: #40574c; font-family: var(--font-display), Georgia, serif; font-size: clamp(21px, 2vw, 26px); line-height: 1.35; }
+.art-product-observation { border-block: 1px solid var(--line); display: grid; gap: 20px; grid-template-columns: 26px 1fr; margin: 38px 0 26px; padding: 26px 0; }
+.art-product-observation svg, .art-product-format svg { color: #728a78; margin-top: 4px; }
+.art-product-observation p { color: var(--body-muted); font-size: 15px; line-height: 1.65; margin: 0; }
+.art-product-observation strong { color: var(--forest-deep); font-weight: 600; }
+.art-product-format { display: grid; gap: 20px; grid-template-columns: 26px 1fr; margin-bottom: 30px; }
+.art-product-format strong, .art-product-format span { display: block; font-size: 15px; }
+.art-product-format strong { color: var(--forest-deep); }
+.art-product-format span { color: var(--body-muted); margin-top: 5px; }
+.art-buy-button { background: var(--forest); border: 1px solid var(--forest); color: white; cursor: pointer; font: inherit; font-size: 14px; font-weight: 600; min-height: 54px; padding: 13px 22px; width: 100%; }
+.art-buy-button:hover:not(:disabled) { background: var(--forest-deep); }
+.art-buy-button:disabled { cursor: wait; opacity: .65; }
+.art-buy-area [role="status"] { color: #a4463f; font-size: 14px; margin: 9px 0 0; min-height: 20px; }
+.art-product-fine-print { color: var(--body-muted); font-size: 13px; line-height: 1.5; margin: 8px 0 0; }
+.art-shop-next { align-items: center; background: var(--sage-pale); display: flex; gap: 50px; justify-content: space-between; padding: 85px max(6vw, 24px); }
+.art-shop-next > div { max-width: 760px; }
+.art-shop-next h2 { font-size: clamp(38px, 4vw, 60px); font-weight: 400; line-height: 1.05; }
+.art-shop-next p:last-child { color: #40574c; font-size: 17px; margin-bottom: 0; }
+.art-shop-next svg { color: var(--forest); flex: none; }
+.art-shop-source { color: var(--body-muted); font-size: 13px; padding: 30px 6vw; }
+.art-shop-source p { margin: 0; }
+.art-shop-source a { display: inline-flex; align-items: center; gap: 3px; }
+.shop-confirmation { min-height: 65vh; max-width: 800px; margin: 0 auto; padding: 100px 24px; }
+.shop-confirmation h1 { font-size: clamp(48px, 6vw, 78px); font-weight: 400; line-height: 1; }
+.shop-confirmation p { color: var(--body-muted); font-size: 17px; }
+.shop-confirmation a.download-link { background: var(--forest); color: white; display: inline-block; font-size: 15px; margin-top: 20px; padding: 15px 25px; text-decoration: none; }
+@media (max-width: 900px) {
+  .art-product { grid-template-columns: 1fr; }
+  .art-product-image { min-height: 0; }
+  .art-product-image img { aspect-ratio: 3 / 2; height: auto; flex: none; }
+}
+@media (max-width: 600px) {
+  .art-shop-intro { padding: 60px 24px 30px; }
+  .art-product { padding: 0; margin-bottom: 60px; }
+  .art-product-details { padding: 38px 24px; }
+  .art-product-image img { aspect-ratio: 4 / 3; }
+  .art-shop-next { padding: 60px 24px; }
+  .art-shop-next svg { display: none; }
+  .art-shop-source { padding: 30px 24px; }
+}

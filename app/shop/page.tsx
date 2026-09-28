@@ -1,49 +1,44 @@
 import type { Metadata } from 'next';
-import { ArrowRight, BookOpen, Image as ImageIcon, PackageOpen, ShoppingBag, Sparkles } from 'lucide-react';
-import { PageHero, SiteFooter, SiteHeader } from '@/components/site-shell';
+import { ArrowRight, Download, Flower2, Package } from 'lucide-react';
+import { SiteFooter, SiteHeader } from '@/components/site-shell';
+import { ShopCheckoutButton } from '@/components/shop-checkout-button';
 
 export const metadata: Metadata = {
-  title: 'Shop | The Well-Kept Habitat',
-  description: 'Future TWKH field guides, books, editorial prints and habitat-inspired objects available without The Habitat Portrait.',
+  title: 'Educational Artwork | The Well-Kept Habitat',
+  description: 'Photographic artwork that pairs the beauty of a garden with a closer look at the life within it.',
 };
-
-const shopPlans = [
-  { icon: BookOpen, tag: 'Editorial collection', title: 'Field guides & books', text: 'Beautiful, practical resources for noticing habitat, choosing with care and returning to the garden season after season.' },
-  { icon: ImageIcon, tag: 'Photography & art', title: 'Editorial prints', text: 'Non-custom images and art objects drawn from TWKH editorial work and available to every habitat-minded home.' },
-  { icon: Sparkles, tag: 'Considered objects', title: 'Habitat goods', text: 'Useful and enduring objects designed to help observation, beauty and stewardship live in everyday practice.' },
-];
 
 export default function ShopPage() {
   return (
     <main>
       <SiteHeader current="shop" />
-      <PageHero
-        eyebrow="Shop · Future offering"
-        title={<>Objects that help<br /><em>the story live on.</em></>}
-        intro="The TWKH Shop will offer independently purchasable field guides, editorial prints and considered habitat goods. No assessment will be required."
-        dark
-      />
-
-      <section className="shop-boundary-banner">
-        <ShoppingBag size={29} />
-        <div><p className="kicker">Available to everyone</p><h2>This is the independent Shop.</h2><p>Everything shown here is intended for purchase without The Habitat Portrait. Property-specific photographs and custom printed portraits remain Habitat Portrait add-ons under Services.</p></div>
-        <a className="text-link" href="/services/habitat-assessments#assessment-addons">See Habitat Portrait add-ons <ArrowRight size={17} /></a>
+      <section className="art-shop-intro">
+        <p className="eyebrow"><span /> The Well-Kept Habitat · Shop</p>
+        <h1>Art for <em>looking closer.</em></h1>
+        <p>Photographs of the encounters that make a garden feel alive. Each digital edition pairs an image for the wall with a brief field note about what you are seeing.</p>
       </section>
 
-      <section className="shop-plans">
-        <div className="section-title-block"><p className="eyebrow"><span /> In development</p><h2>The first collections.</h2><p>The Shop is part of TWKH’s long view. These categories show the intended direction while the core editorial and service offerings take root.</p></div>
-        <div className="shop-grid">
-          {shopPlans.map(({ icon: Icon, tag, title, text }, index) => <article key={title}><span className="product-number">0{index + 1}</span><Icon size={26} /><p className="product-tag">{tag}</p><h2>{title}</h2><p>{text}</p><span className="in-development">No assessment required · In development</span></article>)}
+      <section className="art-product" aria-labelledby="art-product-title">
+        <div className="art-product-image">
+          <img src="/images/bumblebee-blue-fortune-preview.jpg" alt="A bumble bee with orange pollen on its hind leg visits lavender Agastache flowers" />
+          <span>Photographed by Shekeyla Sandore</span>
+        </div>
+        <div className="art-product-details">
+          <p className="kicker">01 / Educational artwork · Digital edition</p>
+          <h2 id="art-product-title">A Visit to the Hyssop</h2>
+          <p className="art-product-lead">A bumble bee pauses at the lavender spires of <i>Agastache</i> ‘Blue Fortune’, its pollen basket carrying the bright trace of another visit.</p>
+          <div className="art-product-observation"><Flower2 size={21} aria-hidden="true" /><p><strong>A closer look</strong><br />The orange patch on the bee’s hind leg is a gathered load of pollen. ‘Blue Fortune’ is a cultivated hybrid in the mint family; it should not be confused with the species commonly called anise hyssop, <i>Agastache foeniculum</i>.</p></div>
+          <div className="art-product-format"><Download size={20} aria-hidden="true" /><div><strong>Instant download</strong><span>Landscape photograph in 4 × 6 and 5 × 7 inch print sizes, plus a one-page field note and printing guide. For personal display or a physical gift.</span></div></div>
+          <ShopCheckoutButton />
+          <p className="art-product-fine-print">Digital files only; no physical print will be shipped. Please keep the files for your own use. The launch price will appear here before sales open.</p>
         </div>
       </section>
 
-      <section className="shop-empty-state">
-        <PackageOpen size={38} />
-        <p className="kicker">Opening in a future season</p>
-        <h2>The shelves are being considered carefully.</h2>
-        <p>Follow TWKH for collection notes, product previews and opening announcements.</p>
-        <a className="button button-forest" href="https://www.instagram.com/thewellkepthabitat/" target="_blank" rel="noreferrer">Follow on Instagram <ArrowRight size={17} /></a>
+      <section className="art-shop-next">
+        <div><p className="kicker">Coming next</p><h2>Made for the wall, sent to your door.</h2><p>Physical fine-art prints are being sampled. Paper, dimensions, packaging, and delivery details will be published once the finished work has been reviewed.</p></div>
+        <Package size={38} aria-hidden="true" />
       </section>
+      <section className="art-shop-source"><p><strong>Field-note references</strong> · <a href="https://plants.ces.ncsu.edu/plants/agastache-blue-fortune/" target="_blank" rel="noreferrer">NC State Extension on ‘Blue Fortune’ <ArrowRight size={13} aria-hidden="true" /></a> · <a href="https://extension.umn.edu/gardening-minnesota/edible-flowers" target="_blank" rel="noreferrer">UMN Extension on anise hyssop <ArrowRight size={13} aria-hidden="true" /></a></p></section>
       <SiteFooter />
     </main>
   );
