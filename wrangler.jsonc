@@ -36,6 +36,12 @@
         "database_name": "twkh-shop-test",
         "database_id": "06072b08-baeb-460c-9d10-7ecbbc38a606",
         "migrations_dir": "migrations"
+      },
+      {
+        "binding": "SHOP_DB",
+        "database_name": "twkh-shop-test",
+        "database_id": "06072b08-baeb-460c-9d10-7ecbbc38a606",
+        "migrations_dir": "shop-migrations"
       }
     ],
     "kv_namespaces": [
