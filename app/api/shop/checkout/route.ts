@@ -1,10 +1,10 @@
-import { checkoutReady, confirmStripeAccount, PRIVATE_FILE_KEY, PRODUCT_PRICE_CENTS, PRODUCT_SLUG, shopEnv, siteUrl, stripeClient } from '@/lib/shop';
+import { checkoutKeyMatchesOrigin, checkoutReady, confirmStripeAccount, PRIVATE_FILE_KEY, PRODUCT_PRICE_CENTS, PRODUCT_SLUG, shopEnv, siteUrl, stripeClient } from '@/lib/shop';
 
 export const runtime = 'edge';
 
 export async function POST(request: Request) {
   const config = shopEnv();
-  if (!checkoutReady(config)) return Response.json({ error: 'This artwork is not on sale yet.' }, { status: 503 });
+  if (!checkoutReady(config) || !checkoutKeyMatchesOrigin(config, request.url)) return Response.json({ error: 'This artwork is not on sale yet.' }, { status: 503 });
   const origin = request.headers.get('origin');
   if (origin && origin !== new URL(request.url).origin) return Response.json({ error: 'Invalid request.' }, { status: 403 });
 
