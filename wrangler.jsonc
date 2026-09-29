@@ -3,7 +3,9 @@
   "name": "thewellkepthabitat",
   "main": "vinext/server/fetch-handler",
   "compatibility_date": "2026-09-01",
-  "compatibility_flags": ["nodejs_compat"],
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
   "d1_databases": [
     {
       "binding": "LEADS_DB",
@@ -22,7 +24,10 @@
     "enabled": true
   },
   "vars": {
-    "SHOP_FROM_EMAIL": "admin@twkhabitat.com"
+    "SHOP_FROM_EMAIL": "admin@twkhabitat.com",
+    "STRIPE_ACCOUNT_ID": "acct_1UKfgM2fAALQO8uD",
+    "STRIPE_PRICE_ID": "price_1UL4452fAALQO8uDUDRrPRW5",
+    "SHOP_ENABLED": "0"
   },
   "previews": {
     "d1_databases": [
