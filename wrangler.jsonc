@@ -20,12 +20,8 @@
   ],
   "observability": {
     "enabled": true
-  }
-}
-{
-  // ...
+  },
   "vars": {
     "SHOP_FROM_EMAIL": "admin@twkhabitat.com"
-  },
-  // ...
+  }
 }
