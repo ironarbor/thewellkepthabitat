@@ -70,3 +70,7 @@ Before enabling sales:
 5. Recheck the live Stripe account, live price, live webhook secret, Worker bindings, private ZIP, and live email sender independently before switching from sandbox to live sales.
 
 The first ZIP contains 4 × 6 and 5 × 7 inch landscape JPEGs, a one-page field note, and personal-use instructions. The two additional supplied JPEGs are 2048 × 1365 previews; their NEF originals are retained outside the public repo. Larger print sizes need appropriately exported originals. Physical print checkout must include a verified shipping address, explicit shipping option/cost shown before payment, fulfillment method, and refund/return policy. No shipping or physical-product charge is active.
+
+## Preview build
+
+Worker Previews are enabled for this draft branch. Checkout remains disabled during setup.
