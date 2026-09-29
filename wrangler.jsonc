@@ -24,6 +24,7 @@
   "vars": {
     "SHOP_FROM_EMAIL": "admin@twkhabitat.com"
   },
+  // Isolated sandbox purchase test. Production checkout remains disabled.
   "previews": {
     "d1_databases": [
       {
