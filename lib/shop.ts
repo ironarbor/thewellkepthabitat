@@ -45,6 +45,17 @@ export function checkoutReady(config: ShopEnv) {
   );
 }
 
+export function checkoutKeyMatchesOrigin(config: ShopEnv, requestUrl: string) {
+  const host = new URL(requestUrl).hostname;
+  const isLiveSite = host === 'thewellkepthabitat.com' || host === 'www.thewellkepthabitat.com';
+  const key = config.STRIPE_SECRET_KEY ?? '';
+  if (isLiveSite) {
+    return config.STRIPE_ACCOUNT_ID === 'acct_1UKfgM2fAALQO8uD' &&
+      /^(sk|rk)_live_/.test(key);
+  }
+  return /^(sk|rk)_test_/.test(key);
+}
+
 export function siteUrl(path: string, base = SITE_URL) {
   return new URL(path, base).toString();
 }

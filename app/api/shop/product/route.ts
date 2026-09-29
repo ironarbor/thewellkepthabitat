@@ -1,10 +1,10 @@
-import { checkoutReady, confirmStripeAccount, PRIVATE_FILE_KEY, PRODUCT_PRICE_CENTS, shopEnv, stripeClient } from '@/lib/shop';
+import { checkoutKeyMatchesOrigin, checkoutReady, confirmStripeAccount, PRIVATE_FILE_KEY, PRODUCT_PRICE_CENTS, shopEnv, stripeClient } from '@/lib/shop';
 
 export const runtime = 'edge';
 
-export async function GET() {
+export async function GET(request: Request) {
   const config = shopEnv();
-  if (!checkoutReady(config)) return Response.json({ available: false }, { headers: { 'Cache-Control': 'no-store' } });
+  if (!checkoutReady(config) || !checkoutKeyMatchesOrigin(config, request.url)) return Response.json({ available: false }, { headers: { 'Cache-Control': 'no-store' } });
   try {
     const file = await config.PRIVATE_FILES.get(PRIVATE_FILE_KEY, 'stream');
     if (!file) return Response.json({ available: false }, { headers: { 'Cache-Control': 'no-store' } });
