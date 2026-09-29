@@ -42,7 +42,8 @@
     "vars": {
       "SHOP_FROM_EMAIL": "admin@twkhabitat.com",
       "STRIPE_ACCOUNT_ID": "acct_1UKfjzKHupIKb8Du",
-      "STRIPE_PRICE_ID": "price_1UKicEKHupIKb8DuwiaNdCwf"
+      "STRIPE_PRICE_ID": "price_1UKicEKHupIKb8DuwiaNdCwf",
+      "SHOP_ENABLED": "1"
     }
   }
 }
