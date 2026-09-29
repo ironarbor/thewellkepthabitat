@@ -15,6 +15,7 @@ export interface ShopEnv {
   PRIVATE_FILES: KVNamespace;
   STRIPE_SECRET_KEY?: string;
   STRIPE_PRICE_ID?: string;
+  STRIPE_ACCOUNT_ID?: string;
   STRIPE_WEBHOOK_SECRET?: string;
   RESEND_API_KEY?: string;
   SHOP_FROM_EMAIL?: string;
@@ -32,24 +33,24 @@ export function stripeClient(key: string) {
   });
 }
 
-export async function confirmStripeAccount(stripe: Stripe) {
+export async function confirmStripeAccount(stripe: Stripe, config: ShopEnv) {
   const account = await stripe.accounts.retrieveCurrent();
-  return TWKH_STRIPE_ACCOUNT_IDS.has(account.id);
+  return TWKH_STRIPE_ACCOUNT_IDS.has(account.id) && account.id === config.STRIPE_ACCOUNT_ID;
 }
 
 export function checkoutReady(config: ShopEnv) {
   return config.SHOP_ENABLED === '1' && Boolean(
-    config.STRIPE_SECRET_KEY && config.STRIPE_PRICE_ID &&
+    config.STRIPE_SECRET_KEY && config.STRIPE_PRICE_ID && config.STRIPE_ACCOUNT_ID &&
     config.STRIPE_WEBHOOK_SECRET && config.RESEND_API_KEY && config.SHOP_FROM_EMAIL,
   );
 }
 
-export function siteUrl(path: string) {
-  return new URL(path, SITE_URL).toString();
+export function siteUrl(path: string, base = SITE_URL) {
+  return new URL(path, base).toString();
 }
 
-export function downloadUrl(token: string) {
-  return siteUrl(`/api/shop/download?token=${encodeURIComponent(token)}`);
+export function downloadUrl(token: string, base?: string) {
+  return siteUrl(`/api/shop/download?token=${encodeURIComponent(token)}`, base);
 }
 
 export interface ShopOrder {
@@ -90,7 +91,7 @@ export async function fulfillPaidSession(session: Stripe.Checkout.Session, confi
       from: config.SHOP_FROM_EMAIL,
       to: [order.customer_email],
       subject: 'Your TWKH artwork download',
-      html: `<p>Thank you for purchasing <strong>A Visit to the Hyssop</strong>.</p><p><a href="${downloadUrl(order.access_token)}">Download your artwork and field note</a></p><p>Your personal download link is available for 90 days. Please keep the digital file for your own use; you may print a copy for personal display or give a physical print as a gift.</p><p>The Well-Kept Habitat</p>`,
+      html: `<p>Thank you for purchasing <strong>Bumbles Amongst the Giants</strong>.</p><p><a href="${downloadUrl(order.access_token, session.metadata?.shop_base_url)}">Download your artwork and field note</a></p><p>Your personal download link is available for 90 days. Please keep the digital file for your own use; you may print a copy for personal display or give a physical print as a gift.</p><p>The Well-Kept Habitat</p>`,
     }),
   });
   if (!response.ok) throw new Error(`Delivery email failed (${response.status})`);

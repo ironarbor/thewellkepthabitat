@@ -16,11 +16,11 @@ export interface CatalogItem {
 const artworks = [
   {
     id: 'visit-to-the-hyssop',
-    title: 'A Visit to the Hyssop',
+    title: 'Bumbles Amongst the Giants',
     image: '/images/bumblebee-blue-fortune-preview.jpg',
     imageAlt: 'A bumble bee with orange pollen visiting lavender hyssop flowers',
-    description: 'A common eastern bumble bee visits Blue Fortune hyssop.',
-    details: 'The digital edition includes 4 × 6 and 5 × 7 inch landscape JPEGs, a one-page field note, and a printing guide. The bee is identified as a female worker Bombus impatiens; the flower is Agastache “Blue Fortune”.',
+    description: 'A common eastern bumblebee visits purple giant hyssop.',
+    details: 'The digital edition includes 4 × 6 and 5 × 7 inch landscape JPEGs, a one-page field note, and a printing guide. The bee is identified as a female worker Bombus impatiens; the plant is described as Agastache scrophulariifolia.',
   },
   {
     id: 'lavender-spires',
