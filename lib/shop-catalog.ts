@@ -28,7 +28,7 @@ const artworks = [
     image: '/images/lavender-spires-photo.jpg',
     imageAlt: 'A sunlit garden filled with tall Agastache flower spikes',
     description: 'A summer stand of Agastache in the garden.',
-    details: 'A second photograph in the educational artwork series. Species notes and downloadable print files are in preparation.',
+    details: 'The digital edition includes 4 × 6 and 5 × 7 inch landscape JPEGs, a one-page field note, and a printing guide. The field note considers the photograph’s composition without assigning a species identification.',
   },
   {
     id: 'gold-and-ivory',
@@ -36,7 +36,7 @@ const artworks = [
     image: '/images/gold-and-ivory-photo.jpg',
     imageAlt: 'Yellow and white flower clusters against a dark garden background',
     description: 'Yellow and white blooms gathered in a quiet garden scene.',
-    details: 'A third photograph in the educational artwork series. Species notes and downloadable print files are in preparation.',
+    details: 'The digital edition includes 4 × 6 and 5 × 7 inch landscape JPEGs, a one-page field note, and a printing guide. The field note considers the photograph’s composition without assigning species identifications.',
   },
 ] as const;
 
@@ -51,7 +51,7 @@ export const catalog: CatalogItem[] = artworks.flatMap((art) => [
     description: art.description,
     details: art.details,
     priceCents: 400,
-    editionReady: art.id === 'visit-to-the-hyssop',
+    editionReady: true,
   },
   {
     id: `${art.id}-print`,

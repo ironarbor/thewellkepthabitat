@@ -1,4 +1,4 @@
-import { PRIVATE_FILE_KEY, shopEnv } from '@/lib/shop';
+import { shopEnv, shopProduct } from '@/lib/shop';
 
 export const runtime = 'edge';
 
@@ -8,15 +8,17 @@ export async function GET(request: Request) {
   const config = shopEnv();
   if (!config.SHOP_DB) return new Response('Download unavailable', { status: 503 });
   const order = await config.SHOP_DB.prepare(
-    'SELECT id FROM shop_orders WHERE access_token = ?1 AND refunded_at IS NULL AND access_expires_at > ?2',
-  ).bind(token, new Date().toISOString()).first<{ id: number }>();
+    'SELECT id, product_slug FROM shop_orders WHERE access_token = ?1 AND refunded_at IS NULL AND access_expires_at > ?2',
+  ).bind(token, new Date().toISOString()).first<{ id: number; product_slug: string }>();
   if (!order) return new Response('This link has expired or is unavailable. Please contact TWKH with your order receipt.', { status: 410 });
-  const file = await config.PRIVATE_FILES.get(PRIVATE_FILE_KEY, 'stream');
+  const product = shopProduct(order.product_slug);
+  if (!product) return new Response('This artwork is unavailable. Please contact TWKH with your order receipt.', { status: 503 });
+  const file = await config.PRIVATE_FILES.get(product.fileKey, 'stream');
   if (!file) return new Response('The file is temporarily unavailable. Please try again shortly.', { status: 503 });
   await config.SHOP_DB.prepare('UPDATE shop_orders SET download_count = download_count + 1 WHERE id = ?1').bind(order.id).run();
   return new Response(file, { headers: {
     'Content-Type': 'application/zip',
-    'Content-Disposition': 'attachment; filename="TWKH-Bumbles-Amongst-the-Giants-Digital-Edition.zip"',
+    'Content-Disposition': `attachment; filename="${product.filename}"`,
     'Cache-Control': 'private, no-store',
     'X-Robots-Tag': 'noindex, nofollow, nosnippet',
   } });

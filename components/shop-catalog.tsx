@@ -14,7 +14,7 @@ export function ShopCatalog() {
   const [cart, setCart] = useState<string[]>([]);
   const [cartOpen, setCartOpen] = useState(false);
   const [selected, setSelected] = useState<CatalogItem | null>(null);
-  const [checkoutAvailable, setCheckoutAvailable] = useState(false);
+  const [availableSlugs, setAvailableSlugs] = useState<string[]>([]);
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState('');
   const [cartLoaded, setCartLoaded] = useState(false);
@@ -25,8 +25,8 @@ export function ShopCatalog() {
       if (Array.isArray(saved)) setCart(saved.filter((id): id is string => typeof id === 'string' && catalog.some(item => item.id === id)));
     } catch { /* An invalid saved cart starts empty. */ }
     setCartLoaded(true);
-    fetch('/api/shop/product').then(response => response.json() as Promise<{ available?: boolean; price?: string }>).then(data => {
-      setCheckoutAvailable(data.available === true && data.price === '$4.00');
+    fetch('/api/shop/product').then(response => response.json() as Promise<{ available?: boolean; price?: string; products?: Record<string, { available?: boolean; price?: string }> }>).then(data => {
+      setAvailableSlugs(Object.entries(data.products ?? {}).filter(([, value]) => value.available && value.price === '$4.00').map(([slug]) => slug));
     }).catch(() => {});
   }, []);
 
@@ -51,7 +51,7 @@ export function ShopCatalog() {
   const cartItems = cart.map(id => catalog.find(item => item.id === id)).filter((item): item is CatalogItem => Boolean(item));
   const hasPendingItems = cartItems.some(item => item.priceCents === null);
   const hasUnfinishedEditions = cartItems.some(item => !item.editionReady);
-  const canCheckout = checkoutAvailable && cart.length === 1 && cart[0] === 'visit-to-the-hyssop-digital';
+  const canCheckout = cartItems.length === 1 && cartItems[0].format === 'digital' && availableSlugs.includes(cartItems[0].artwork);
   const subtotal = cartItems.reduce((sum, item) => sum + (item.priceCents ?? 0), 0);
 
   function addToCart(item: CatalogItem) {
@@ -68,7 +68,7 @@ export function ShopCatalog() {
     try {
       const response = await fetch('/api/shop/checkout', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ product: 'visit-to-the-hyssop' }),
+        body: JSON.stringify({ product: cartItems[0].artwork }),
       });
       const result = await response.json() as { url?: string; error?: string };
       if (!response.ok || !result.url) throw new Error(result.error ?? 'Checkout is unavailable.');
@@ -119,7 +119,7 @@ export function ShopCatalog() {
       {cartItems.length ? <><div className="catalog-cart-items">{cartItems.map(item => <div className="catalog-cart-item" key={item.id}><img src={item.image} alt="" /><div><strong>{item.title}</strong><span>{item.format === 'digital' ? 'Digital download' : 'Physical print'}</span><span>{item.priceCents !== null ? money(item.priceCents) : 'Price pending'}</span><button type="button" onClick={() => setCart(current => current.filter(id => id !== item.id))}>Remove</button></div></div>)}</div>
         <div className="catalog-cart-summary"><p><span>Priced items</span><strong>{money(subtotal)}</strong></p>{hasUnfinishedEditions && <p className="catalog-cart-pending">Some editions are still in preparation. This cart cannot be checked out until their files or print fulfillment are ready.</p>}{hasPendingItems && <p className="catalog-cart-pending">Additional item prices are pending. Shipping for physical prints will be shown before payment.</p>}
           <button className="catalog-primary-button" type="button" disabled={!canCheckout || busy} onClick={startCheckout}>{busy ? 'Opening checkout…' : canCheckout ? 'Continue to secure checkout' : 'Checkout opening soon'}</button>
-          <p className="catalog-cart-note">{canCheckout ? 'Final total is shown in Stripe Checkout before payment.' : 'This is a preview cart. No payment will be taken.'}</p><p role="status" aria-live="polite">{message}</p>
+          <p className="catalog-cart-note">{canCheckout ? 'Final total is shown in Stripe Checkout before payment. Purchase one digital edition at a time.' : cartItems.length > 1 && !hasUnfinishedEditions && !hasPendingItems ? 'Purchase one digital edition at a time. Remove the others to continue.' : 'This cart cannot be checked out yet. No payment will be taken.'}</p><p role="status" aria-live="polite">{message}</p>
         </div></> : <div className="catalog-cart-empty"><ShoppingBag size={32} aria-hidden="true" /><p>Your cart is empty.</p><button type="button" onClick={() => setCartOpen(false)}>Browse artwork</button></div>}
     </aside></div>}
   </>;
