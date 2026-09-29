@@ -11,7 +11,7 @@ export const PRIVATE_FILE_KEY = 'shop/visit-to-the-hyssop-v1.zip';
 const SITE_URL = 'https://thewellkepthabitat.com';
 
 export interface ShopEnv {
-  LEADS_DB: D1Database;
+  SHOP_DB?: D1Database;
   PRIVATE_FILES: KVNamespace;
   STRIPE_SECRET_KEY?: string;
   STRIPE_PRICE_ID?: string;
@@ -39,7 +39,7 @@ export async function confirmStripeAccount(stripe: Stripe, config: ShopEnv) {
 }
 
 export function checkoutReady(config: ShopEnv) {
-  return config.SHOP_ENABLED === '1' && Boolean(
+  return config.SHOP_ENABLED === '1' && Boolean(config.SHOP_DB) && Boolean(
     config.STRIPE_SECRET_KEY && config.STRIPE_PRICE_ID && config.STRIPE_ACCOUNT_ID &&
     config.STRIPE_WEBHOOK_SECRET && config.RESEND_API_KEY && config.SHOP_FROM_EMAIL,
   );
@@ -78,7 +78,7 @@ export async function fulfillPaidSession(session: Stripe.Checkout.Session, confi
 
   const token = crypto.randomUUID();
   const expires = new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString();
-  await config.LEADS_DB.prepare(
+  await config.SHOP_DB!.prepare(
     `INSERT OR IGNORE INTO shop_orders
       (stripe_session_id, stripe_payment_intent_id, product_slug, customer_email, amount_total, currency, access_token, access_expires_at)
      VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8)`,
@@ -89,7 +89,7 @@ export async function fulfillPaidSession(session: Stripe.Checkout.Session, confi
     session.currency ?? 'usd', token, expires,
   ).run();
 
-  const order = await config.LEADS_DB.prepare(
+  const order = await config.SHOP_DB!.prepare(
     'SELECT id, access_token, access_expires_at, customer_email, email_sent_at FROM shop_orders WHERE stripe_session_id = ?1',
   ).bind(session.id).first<ShopOrder>();
   if (!order || order.email_sent_at) return;
@@ -106,6 +106,6 @@ export async function fulfillPaidSession(session: Stripe.Checkout.Session, confi
     }),
   });
   if (!response.ok) throw new Error(`Delivery email failed (${response.status})`);
-  await config.LEADS_DB.prepare('UPDATE shop_orders SET email_sent_at = CURRENT_TIMESTAMP WHERE id = ?1')
+  await config.SHOP_DB!.prepare('UPDATE shop_orders SET email_sent_at = CURRENT_TIMESTAMP WHERE id = ?1')
     .bind(order.id).run();
 }
