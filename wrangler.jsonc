@@ -12,6 +12,12 @@
       "database_name": "twkh-launch",
       "database_id": "6374dd0c-91ca-44b2-a628-c1e6bf16a724",
       "migrations_dir": "migrations"
+    },
+    {
+      "binding": "SHOP_DB",
+      "database_name": "twkh-shop-orders",
+      "database_id": "ab9b1449-497b-4fe2-90d8-1d32a762456a",
+      "migrations_dir": "shop-migrations"
     }
   ],
   "kv_namespaces": [
