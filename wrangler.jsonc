@@ -23,5 +23,25 @@
   },
   "vars": {
     "SHOP_FROM_EMAIL": "admin@twkhabitat.com"
+  },
+  "previews": {
+    "d1_databases": [
+      {
+        "binding": "LEADS_DB",
+        "database_name": "twkh-shop-test",
+        "database_id": "06072b08-baeb-460c-9d10-7ecbbc38a606",
+        "migrations_dir": "migrations"
+      }
+    ],
+    "kv_namespaces": [
+      {
+        "binding": "PRIVATE_FILES",
+        "id": "48db0075d92a4643ab62a6ef22ebb37b"
+      }
+    ],
+    "vars": {
+      "SHOP_FROM_EMAIL": "admin@twkhabitat.com",
+      "STRIPE_PRICE_ID": "price_1UKicEKHupIKb8DuwiaNdCwf"
+    }
   }
 }
