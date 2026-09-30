@@ -1,4 +1,4 @@
-export type ShopFormat = 'digital' | 'print';
+export type ShopFormat = 'digital';
 
 export interface CatalogItem {
   id: string;
@@ -28,12 +28,11 @@ const artworks = [
     image: '/images/gold-and-ivory-photo.jpg',
     imageAlt: 'Yellow Canada goldenrod and white sweet everlasting flower clusters against a dark garden background',
     description: 'Canada goldenrod and sweet everlasting meet in a late-summer garden scene.',
-    details: 'The digital edition is being prepared with 4 × 6 and 5 × 7 inch landscape JPEGs, a botanical field note about Canada goldenrod (Solidago canadensis) and sweet everlasting (Pseudognaphalium obtusifolium), and a printing guide.',
+    details: 'The digital edition includes 4 × 6 and 5 × 7 inch landscape JPEGs, a botanical field note about Canada goldenrod (Solidago canadensis) and sweet everlasting (Pseudognaphalium obtusifolium), and a printing guide.',
   },
 ] as const;
 
-export const catalog: CatalogItem[] = artworks.flatMap((art) => [
-  {
+export const catalog: CatalogItem[] = artworks.map((art) => ({
     id: `${art.id}-digital`,
     artwork: art.id,
     title: art.title,
@@ -44,17 +43,4 @@ export const catalog: CatalogItem[] = artworks.flatMap((art) => [
     details: `${art.details} Photography guarantee: No AI was used to create this photograph.`,
     priceCents: 400,
     editionReady: art.id === 'visit-to-the-hyssop' || art.id === 'gold-and-ivory',
-  },
-  {
-    id: `${art.id}-print`,
-    artwork: art.id,
-    title: art.title,
-    format: 'print' as const,
-    image: art.image,
-    imageAlt: art.imageAlt,
-    description: art.description,
-    details: 'A physical print of this photograph is planned. Paper, size, print price, production method, and shipping charge will be confirmed before orders open. Photography guarantee: No AI was used to create this photograph.',
-    priceCents: null,
-    editionReady: false,
-  },
-]);
+}));
