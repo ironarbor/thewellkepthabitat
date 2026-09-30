@@ -16,7 +16,7 @@ export interface CatalogItem {
 const artworks = [
   {
     id: 'visit-to-the-hyssop',
-    title: 'Bumbles Amongst the Giants',
+    title: 'Bumbles Amongst Giants',
     image: '/images/bumblebee-blue-fortune-preview.jpg',
     imageAlt: 'A bumble bee with orange pollen visiting lavender hyssop flowers',
     description: 'A common eastern bumblebee visits purple giant hyssop.',
@@ -24,7 +24,7 @@ const artworks = [
   },
   {
     id: 'gold-and-ivory',
-    title: 'Gold & Ivory',
+    title: 'Golden Everlasting',
     image: '/images/gold-and-ivory-photo.jpg',
     imageAlt: 'Yellow Canada goldenrod and white sweet everlasting flower clusters against a dark garden background',
     description: 'Canada goldenrod and sweet everlasting meet in a late-summer garden scene.',
@@ -41,9 +41,9 @@ export const catalog: CatalogItem[] = artworks.flatMap((art) => [
     image: art.image,
     imageAlt: art.imageAlt,
     description: art.description,
-    details: art.details,
+    details: `${art.details} Photography guarantee: No AI was used to create this photograph.`,
     priceCents: 400,
-    editionReady: art.id === 'visit-to-the-hyssop',
+    editionReady: art.id === 'visit-to-the-hyssop' || art.id === 'gold-and-ivory',
   },
   {
     id: `${art.id}-print`,
@@ -53,7 +53,7 @@ export const catalog: CatalogItem[] = artworks.flatMap((art) => [
     image: art.image,
     imageAlt: art.imageAlt,
     description: art.description,
-    details: 'A physical print of this photograph is planned. Paper, size, print price, production method, and shipping charge will be confirmed before orders open.',
+    details: 'A physical print of this photograph is planned. Paper, size, print price, production method, and shipping charge will be confirmed before orders open. Photography guarantee: No AI was used to create this photograph.',
     priceCents: null,
     editionReady: false,
   },

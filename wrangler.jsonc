@@ -33,6 +33,7 @@
     "SHOP_FROM_EMAIL": "admin@twkhabitat.com",
     "STRIPE_ACCOUNT_ID": "acct_1UKfgM2fAALQO8uD",
     "STRIPE_PRICE_ID": "price_1UL4452fAALQO8uDUDRrPRW5",
+    "STRIPE_PRICE_ID_GOLD_IVORY": "price_1UL52S2fAALQO8uDTJ1uMudW",
     "SHOP_ENABLED": "1"
   },
   "previews": {
