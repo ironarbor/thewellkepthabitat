@@ -16,27 +16,19 @@ export interface CatalogItem {
 const artworks = [
   {
     id: 'visit-to-the-hyssop',
-    title: 'Bumbles Amongst the Giants',
+    title: 'Bumbles Amongst Giants',
     image: '/images/bumblebee-blue-fortune-preview.jpg',
     imageAlt: 'A bumble bee with orange pollen visiting lavender hyssop flowers',
     description: 'A common eastern bumblebee visits purple giant hyssop.',
     details: 'The digital edition includes 4 × 6 and 5 × 7 inch landscape JPEGs, a one-page field note, and a printing guide. The bee is identified as a female worker Bombus impatiens; the plant is described as Agastache scrophulariifolia.',
   },
   {
-    id: 'lavender-spires',
-    title: 'Agastache',
-    image: '/images/lavender-spires-photo.jpg',
-    imageAlt: 'A sunlit garden filled with tall Agastache flower spikes',
-    description: 'A summer stand of Agastache in the garden.',
-    details: 'The digital edition includes 4 × 6 and 5 × 7 inch landscape JPEGs, a one-page field note, and a printing guide. The field note considers the photograph’s composition without assigning a species identification.',
-  },
-  {
     id: 'gold-and-ivory',
     title: 'Gold & Ivory',
     image: '/images/gold-and-ivory-photo.jpg',
-    imageAlt: 'Yellow and white flower clusters against a dark garden background',
-    description: 'Yellow and white blooms gathered in a quiet garden scene.',
-    details: 'The digital edition includes 4 × 6 and 5 × 7 inch landscape JPEGs, a one-page field note, and a printing guide. The field note considers the photograph’s composition without assigning species identifications.',
+    imageAlt: 'Yellow Canada goldenrod and white sweet everlasting flower clusters against a dark garden background',
+    description: 'Canada goldenrod and sweet everlasting meet in a late-summer garden scene.',
+    details: 'The digital edition is being prepared with 4 × 6 and 5 × 7 inch landscape JPEGs, a botanical field note about Canada goldenrod (Solidago canadensis) and sweet everlasting (Pseudognaphalium obtusifolium), and a printing guide.',
   },
 ] as const;
 
@@ -51,7 +43,7 @@ export const catalog: CatalogItem[] = artworks.flatMap((art) => [
     description: art.description,
     details: art.details,
     priceCents: 400,
-    editionReady: true,
+    editionReady: art.id === 'visit-to-the-hyssop',
   },
   {
     id: `${art.id}-print`,

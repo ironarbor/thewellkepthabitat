@@ -44,9 +44,9 @@ The redirects from `twkhabitat.com` and `wellkepthabitat.com` are configured in 
 
 ## Digital artwork shop
 
-The shop catalog has three photographs, each in digital and physical-print formats. **All three digital editions are priced at $4.00 USD each before tax.** Each digital edition has its own private ZIP, live Stripe Price, order record, and download email. Checkout accepts one digital edition at a time. All physical prints remain placeholders until paper, size, production, prices, and shipping charges are decided.
+The shop catalog has two photographs, each in digital and physical-print formats. **Bumbles Amongst Giants** is the live $4.00 digital edition. The Gold & Ivory working-title edition stays unavailable while its title and botanical field note are reviewed. Checkout accepts one digital edition at a time. Physical prints remain placeholders until paper, size, production, prices, and shipping charges are decided.
 
-The first photograph depicts a female worker common eastern bumblebee (*Bombus impatiens*) visiting purple giant hyssop (*Agastache scrophulariifolia*), as confirmed by the owner. The other two photographs use descriptive working titles, and their field notes avoid unverified species claims. Public images are previews. Private KV keys are `shop/visit-to-the-hyssop-v1.zip`, `shop/lavender-spires-v1.zip`, and `shop/gold-and-ivory-v1.zip`; never commit purchased files or Stripe credentials to this public repository.
+The first photograph depicts a female worker common eastern bumblebee (*Bombus impatiens*) visiting purple giant hyssop (*Agastache scrophulariifolia*), as confirmed by the owner. The second shows sweet everlasting (*Pseudognaphalium obtusifolium*) and Canada goldenrod (*Solidago canadensis*) per the owner; its revised field note is pending approval. Public images are previews. Private KV keys are `shop/visit-to-the-hyssop-v1.zip` and `shop/gold-and-ivory-v1.zip`; never commit purchased files or Stripe credentials to this public repository.
 
 Checkout remains closed until every part of fulfillment is ready. Configure these Worker secrets/variables in a Stripe sandbox first:
 
@@ -54,7 +54,6 @@ Checkout remains closed until every part of fulfillment is ready. Configure thes
 | --- | --- |
 | `STRIPE_SECRET_KEY` | TWKH account test key during sandbox testing; use a fresh restricted key with Account read, Price read, and Checkout Session write permissions. Rotate the previously shared test secret. Store as a Cloudflare Worker Secret. |
 | `STRIPE_PRICE_ID` | First digital edition's one-time USD $4.00 tax-exclusive Price. Live: `price_1UL4452fAALQO8uDUDRrPRW5`; isolated sandbox: `price_1UKicEKHupIKb8DuwiaNdCwf`. |
-| `STRIPE_PRICE_ID_AGASTACHE` | Agastache live one-time $4 Price: `price_1UL52e2fAALQO8uDKFyr4Fkz`. |
 | `STRIPE_PRICE_ID_GOLD_IVORY` | Gold & Ivory live one-time $4 Price: `price_1UL52S2fAALQO8uDTJ1uMudW`. |
 | `STRIPE_WEBHOOK_SECRET` | Signing secret for the webhook at `/api/shop/webhook` |
 | `RESEND_API_KEY` | Transactional delivery email |
@@ -71,7 +70,7 @@ Before enabling sales:
 4. Massachusetts DOR Directive 11-4 says a photographer's pictures transferred solely as a digital file via the Internet are not subject to Massachusetts sales tax. This product delivers only a digital ZIP, so pending Massachusetts sales tax registration is not a launch blocker for this edition. The integration does **not** set `automatic_tax`; review obligations in other jurisdictions as sales expand, and revisit tax treatment for any physical prints. A Stripe receipt does not replace the separate artwork delivery email.
 5. Recheck the live Stripe account, live price, live webhook secret, Worker bindings, private ZIP, and live email sender independently before switching from sandbox to live sales.
 
-Each ZIP contains 4 × 6 and 5 × 7 inch landscape JPEGs, a one-page field note, and personal-use instructions. The two additional supplied JPEGs are 2048 × 1365; their NEF originals are retained outside the public repo. Larger print sizes need appropriately exported originals. Physical print checkout must include a verified shipping address, explicit shipping option/cost shown before payment, fulfillment method, and refund/return policy. No shipping or physical-product charge is active.
+Each ZIP contains 4 × 6 and 5 × 7 inch landscape JPEGs, a one-page field note, and personal-use instructions. The Gold & Ivory supplied JPEG is 2048 × 1365; its NEF original is retained outside the public repo. Larger print sizes need appropriately exported originals. Physical print checkout must include a verified shipping address, explicit shipping option/cost shown before payment, fulfillment method, and refund/return policy. No shipping or physical-product charge is active.
 
 ## Preview build
 

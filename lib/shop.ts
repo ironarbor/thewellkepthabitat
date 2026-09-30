@@ -9,19 +9,15 @@ export const TWKH_STRIPE_ACCOUNT_IDS = new Set([
 ]);
 export const SHOP_PRODUCTS = {
   'visit-to-the-hyssop': {
-    title: 'Bumbles Amongst the Giants',
+    title: 'Bumbles Amongst Giants',
+    saleReady: true,
     fileKey: 'shop/visit-to-the-hyssop-v1.zip',
-    filename: 'TWKH-Bumbles-Amongst-the-Giants-Digital-Edition.zip',
+    filename: 'TWKH-Bumbles-Amongst-Giants-Digital-Edition.zip',
     priceBinding: 'STRIPE_PRICE_ID',
-  },
-  'lavender-spires': {
-    title: 'Agastache',
-    fileKey: 'shop/lavender-spires-v1.zip',
-    filename: 'TWKH-Agastache-Digital-Edition.zip',
-    priceBinding: 'STRIPE_PRICE_ID_AGASTACHE',
   },
   'gold-and-ivory': {
     title: 'Gold & Ivory',
+    saleReady: false, // Hold until the title and revised field note are approved.
     fileKey: 'shop/gold-and-ivory-v1.zip',
     filename: 'TWKH-Gold-and-Ivory-Digital-Edition.zip',
     priceBinding: 'STRIPE_PRICE_ID_GOLD_IVORY',
@@ -38,7 +34,6 @@ export interface ShopEnv {
   PRIVATE_FILES: KVNamespace;
   STRIPE_SECRET_KEY?: string;
   STRIPE_PRICE_ID?: string;
-  STRIPE_PRICE_ID_AGASTACHE?: string;
   STRIPE_PRICE_ID_GOLD_IVORY?: string;
   STRIPE_ACCOUNT_ID?: string;
   STRIPE_WEBHOOK_SECRET?: string;
@@ -76,6 +71,7 @@ export function productPriceId(config: ShopEnv, slug: ShopProductSlug) {
 
 export async function availableProduct(stripe: Stripe, config: ShopEnv, slug: ShopProductSlug) {
   const product = SHOP_PRODUCTS[slug];
+  if (!product.saleReady) return false;
   const priceId = productPriceId(config, slug);
   if (!priceId || !await config.PRIVATE_FILES.get(product.fileKey, 'stream')) return false;
   const price = await stripe.prices.retrieve(priceId);
@@ -136,16 +132,17 @@ export async function fulfillPaidSession(session: Stripe.Checkout.Session, confi
   if (!config.RESEND_API_KEY || !config.SHOP_FROM_EMAIL) throw new Error('Shop delivery email is not configured');
 
   const link = downloadUrl(order.access_token, session.metadata?.shop_base_url);
-  const html = `<div style="margin:0;padding:32px 16px;background:#f4f3ec;font-family:Arial,sans-serif;color:#182421"><div style="max-width:560px;margin:auto;background:#fff;border:1px solid #d9ded7"><div style="padding:18px 28px;background:#365849;color:#fff;letter-spacing:2px;font-size:13px;font-weight:bold">TWKH &nbsp;|&nbsp; THE WELL-KEPT HABITAT</div><div style="padding:32px 28px"><p style="margin:0 0 8px;color:#365849;font-size:12px;letter-spacing:2px;text-transform:uppercase">Your digital edition</p><h1 style="margin:0 0 20px;font-family:Georgia,serif;font-size:28px;font-weight:normal">${product.title}</h1><p style="line-height:1.6">Thank you for supporting The Well-Kept Habitat. Your artwork, two print sizes, and field note are ready.</p><p style="margin:28px 0"><a href="${link}" style="display:inline-block;padding:14px 22px;background:#365849;color:#fff;text-decoration:none;font-weight:bold">Download your artwork</a></p><p style="font-size:14px;line-height:1.6">This link is valid for 30 days. Your files are for personal use; you may print a copy for personal display or give a physical print as a gift.</p><p style="font-size:14px">If the button does not work, copy this address into your browser:<br><a href="${link}" style="color:#365849;word-break:break-all">${link}</a></p></div><div style="padding:18px 28px;border-top:1px solid #d9ded7;color:#365849;font-size:12px">Ecological by design. Elegant by intention.<br><a href="https://thewellkepthabitat.com" style="color:#365849">thewellkepthabitat.com</a></div></div></div>`;
+  const expiration = new Date(order.access_expires_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+  const html = `<div style="margin:0;padding:28px 12px;background:#f4f3ec;color:#182421;font-family:Arial,sans-serif"><table role="presentation" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;margin:auto;background:#fff;border:1px solid #d9ded7"><tr><td align="center" style="padding:30px 24px 12px"><img src="https://thewellkepthabitat.com/images/twkh-logo-seal-web.png" width="78" height="101" alt="The Well-Kept Habitat seal" style="display:block;width:78px;height:101px;border:0"></td></tr><tr><td style="padding:14px 38px 34px"><p style="margin:0 0 12px;text-align:center;color:#365849;font-size:11px;letter-spacing:3px">TWKH / DIGITAL EDITION</p><h1 style="margin:0 0 22px;text-align:center;color:#182421;font-family:Georgia,serif;font-size:31px;font-weight:normal;line-height:1.2">A closer look, now yours.</h1><p style="margin:0 0 18px;font-size:15px;line-height:1.65">Thank you for choosing <strong>${product.title}</strong>. Your photograph, two landscape print sizes, and field note are ready to enjoy.</p><p style="margin:28px 0;text-align:center"><a href="${link}" style="display:inline-block;padding:15px 28px;background:#365849;color:#fff;text-decoration:none;font-size:14px;font-weight:bold;letter-spacing:1px">DOWNLOAD YOUR EDITION</a></p><p style="margin:0 0 18px;font-size:13px;line-height:1.6">Your private link is available through ${expiration}. Keep the digital files for personal use; you may display a print or give a physical print as a gift.</p><p style="margin:0;font-size:12px;line-height:1.6;color:#4a5e54">Button not opening? <a href="${link}" style="color:#365849;word-break:break-all">Use this direct download link</a>. For help, reply to this email or write to <a href="mailto:admin@twkhabitat.com" style="color:#365849">admin@twkhabitat.com</a>.</p></td></tr><tr><td align="center" style="padding:22px 30px;background:#edf0ea;color:#365849;font-family:Georgia,serif;font-size:15px;line-height:1.6">Ecological by design. Elegant by intention.<br><a href="https://thewellkepthabitat.com" style="color:#365849;font-family:Arial,sans-serif;font-size:11px">thewellkepthabitat.com</a></td></tr></table></div>`;
   const response = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: { Authorization: `Bearer ${config.RESEND_API_KEY}`, 'Content-Type': 'application/json', 'Idempotency-Key': `twkh-shop-${session.id}` },
     body: JSON.stringify({
       from: config.SHOP_FROM_EMAIL,
       to: [order.customer_email],
-      subject: `Your TWKH download: ${product.title}`,
+      subject: `Your artwork is ready | TWKH`,
       html,
-      text: `Thank you for purchasing ${product.title} from The Well-Kept Habitat. Download your artwork and field note: ${link}\n\nThis link is valid for 30 days. The digital files are for personal use; you may print a copy for personal display or give a physical print as a gift.\n\nThe Well-Kept Habitat | thewellkepthabitat.com`,
+      text: `TWKH / DIGITAL EDITION\n\nA closer look, now yours.\n\nThank you for choosing ${product.title}. Your photograph, two landscape print sizes, and field note are ready.\n\nDownload your edition: ${link}\n\nYour private link is available through ${expiration}. Keep the digital files for personal use; you may display a print or give a physical print as a gift.\n\nFor help, reply to this email or write to admin@twkhabitat.com.\n\nEcological by design. Elegant by intention.\nthewellkepthabitat.com`,
     }),
   });
   if (!response.ok) throw new Error(`Delivery email failed (${response.status})`);
