@@ -772,6 +772,11 @@ footer { align-items: start; background: #e7e4da; display: grid; gap: 5vw; grid-
 .catalog-cart-empty { color: var(--body-muted); margin: auto; text-align: center; }
 .catalog-cart-empty button { background: none; border: 0; color: var(--forest); cursor: pointer; text-decoration: underline; }
 .shop-confirmation { min-height: 65vh; max-width: 800px; margin: 0 auto; padding: 100px 24px; }
+.shop-policy { max-width: 760px; margin: 0 auto; padding: 70px 24px 110px; }
+.shop-policy h1 { font-size: clamp(42px, 5vw, 66px); font-weight: 400; line-height: 1.05; margin: 18px 0 35px; }
+.shop-policy h2 { font-size: 28px; font-weight: 400; margin: 34px 0 10px; }
+.shop-policy p { color: var(--body-muted); font-size: 16px; line-height: 1.7; }
+.shop-policy a, .catalog-cart-note a { color: var(--forest); text-decoration: underline; text-underline-offset: 3px; }
 .shop-confirmation h1 { font-size: clamp(48px, 6vw, 78px); font-weight: 400; line-height: 1; }
 .shop-confirmation p { color: var(--body-muted); font-size: 17px; }
 .shop-confirmation a.download-link { background: var(--forest); color: white; display: inline-block; font-size: 15px; margin-top: 20px; padding: 15px 25px; text-decoration: none; }

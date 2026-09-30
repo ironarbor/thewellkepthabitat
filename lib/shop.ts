@@ -16,10 +16,10 @@ export const SHOP_PRODUCTS = {
     priceBinding: 'STRIPE_PRICE_ID',
   },
   'gold-and-ivory': {
-    title: 'Gold & Ivory',
+    title: 'Golden Everlasting',
     saleReady: false, // Hold until the title and revised field note are approved.
     fileKey: 'shop/gold-and-ivory-v1.zip',
-    filename: 'TWKH-Gold-and-Ivory-Digital-Edition.zip',
+    filename: 'TWKH-Golden-Everlasting-Digital-Edition.zip',
     priceBinding: 'STRIPE_PRICE_ID_GOLD_IVORY',
   },
 } as const;

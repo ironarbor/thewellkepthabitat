@@ -24,7 +24,7 @@ const artworks = [
   },
   {
     id: 'gold-and-ivory',
-    title: 'Gold & Ivory',
+    title: 'Golden Everlasting',
     image: '/images/gold-and-ivory-photo.jpg',
     imageAlt: 'Yellow Canada goldenrod and white sweet everlasting flower clusters against a dark garden background',
     description: 'Canada goldenrod and sweet everlasting meet in a late-summer garden scene.',

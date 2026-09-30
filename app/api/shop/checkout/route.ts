@@ -32,6 +32,7 @@ export async function POST(request: Request) {
       success_url: siteUrl('/shop/thank-you?session_id={CHECKOUT_SESSION_ID}', shopBaseUrl),
       cancel_url: siteUrl('/shop', shopBaseUrl),
       metadata: { product: slug, shop_base_url: shopBaseUrl },
+      custom_text: { submit: { message: 'Digital edition: sales are final after delivery, with exceptions for duplicate charges or file problems we cannot resolve. [Read the full refund policy](https://thewellkepthabitat.com/shop/refund-policy).' } },
       integration_identifier: `twkh-artwork-${letters}`,
     });
     if (!session.url) throw new Error('Stripe did not provide a checkout URL');

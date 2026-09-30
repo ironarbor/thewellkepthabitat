@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { ArrowRight, Download, Search, ShoppingBag, Truck, X } from 'lucide-react';
 import { catalog, type CatalogItem, type ShopFormat } from '@/lib/shop-catalog';
+import Link from 'next/link';
 
 type Filter = 'all' | ShopFormat;
 const CART_KEY = 'twkh-shop-cart-v1';
@@ -118,6 +119,7 @@ export function ShopCatalog() {
       <header><div><p className="kicker">Your selection</p><h2 id="catalog-cart-title">Shopping cart <span>({cart.length})</span></h2></div><button type="button" onClick={() => setCartOpen(false)} aria-label="Close cart"><X size={22} /></button></header>
       {cartItems.length ? <><div className="catalog-cart-items">{cartItems.map(item => <div className="catalog-cart-item" key={item.id}><img src={item.image} alt="" /><div><strong>{item.title}</strong><span>{item.format === 'digital' ? 'Digital download' : 'Physical print'}</span><span>{item.priceCents !== null ? money(item.priceCents) : 'Price pending'}</span><button type="button" onClick={() => setCart(current => current.filter(id => id !== item.id))}>Remove</button></div></div>)}</div>
         <div className="catalog-cart-summary"><p><span>Priced items</span><strong>{money(subtotal)}</strong></p>{hasUnfinishedEditions && <p className="catalog-cart-pending">Some editions are still in preparation. This cart cannot be checked out until their files or print fulfillment are ready.</p>}{hasPendingItems && <p className="catalog-cart-pending">Additional item prices are pending. Shipping for physical prints will be shown before payment.</p>}
+          {canCheckout && <p className="catalog-cart-note">Digital sales are final after delivery, except for duplicate charges or unresolved file problems. <Link href="/shop/refund-policy">Read the full refund policy</Link> before payment.</p>}
           <button className="catalog-primary-button" type="button" disabled={!canCheckout || busy} onClick={startCheckout}>{busy ? 'Opening checkout…' : canCheckout ? 'Continue to secure checkout' : 'Checkout opening soon'}</button>
           <p className="catalog-cart-note">{canCheckout ? 'Final total is shown in Stripe Checkout before payment. Purchase one digital edition at a time.' : cartItems.length > 1 && !hasUnfinishedEditions && !hasPendingItems ? 'Purchase one digital edition at a time. Remove the others to continue.' : 'This cart cannot be checked out yet. No payment will be taken.'}</p><p role="status" aria-live="polite">{message}</p>
         </div></> : <div className="catalog-cart-empty"><ShoppingBag size={32} aria-hidden="true" /><p>Your cart is empty.</p><button type="button" onClick={() => setCartOpen(false)}>Browse artwork</button></div>}
