@@ -43,7 +43,7 @@ export const catalog: CatalogItem[] = artworks.flatMap((art) => [
     description: art.description,
     details: `${art.details} Photography guarantee: No AI was used to create this photograph.`,
     priceCents: 400,
-    editionReady: art.id === 'visit-to-the-hyssop',
+    editionReady: art.id === 'visit-to-the-hyssop' || art.id === 'gold-and-ivory',
   },
   {
     id: `${art.id}-print`,

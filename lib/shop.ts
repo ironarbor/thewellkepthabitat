@@ -17,7 +17,7 @@ export const SHOP_PRODUCTS = {
   },
   'gold-and-ivory': {
     title: 'Golden Everlasting',
-    saleReady: false, // Hold until the title and revised field note are approved.
+    saleReady: true,
     fileKey: 'shop/gold-and-ivory-v1.zip',
     filename: 'TWKH-Golden-Everlasting-Digital-Edition.zip',
     priceBinding: 'STRIPE_PRICE_ID_GOLD_IVORY',
