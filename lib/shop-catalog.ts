@@ -23,20 +23,12 @@ const artworks = [
     details: 'The digital edition includes 4 × 6 and 5 × 7 inch landscape JPEGs, a one-page field note, and a printing guide. The bee is identified as a female worker Bombus impatiens; the plant is described as Agastache scrophulariifolia.',
   },
   {
-    id: 'lavender-spires',
-    title: 'Agastache',
-    image: '/images/lavender-spires-photo.jpg',
-    imageAlt: 'A sunlit garden filled with tall Agastache flower spikes',
-    description: 'A summer stand of Agastache in the garden.',
-    details: 'A second photograph in the educational artwork series. Species notes and downloadable print files are in preparation.',
-  },
-  {
     id: 'gold-and-ivory',
     title: 'Gold & Ivory',
     image: '/images/gold-and-ivory-photo.jpg',
-    imageAlt: 'Yellow and white flower clusters against a dark garden background',
-    description: 'Yellow and white blooms gathered in a quiet garden scene.',
-    details: 'A third photograph in the educational artwork series. Species notes and downloadable print files are in preparation.',
+    imageAlt: 'Yellow Canada goldenrod and white sweet everlasting flower clusters against a dark garden background',
+    description: 'Canada goldenrod and sweet everlasting meet in a late-summer garden scene.',
+    details: 'The digital edition is being prepared with 4 × 6 and 5 × 7 inch landscape JPEGs, a botanical field note about Canada goldenrod (Solidago canadensis) and sweet everlasting (Pseudognaphalium obtusifolium), and a printing guide.',
   },
 ] as const;
 
