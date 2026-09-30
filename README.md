@@ -44,7 +44,7 @@ The redirects from `twkhabitat.com` and `wellkepthabitat.com` are configured in 
 
 ## Digital artwork shop
 
-The shop catalog has three photographs, each in digital and physical-print formats. Search, format filters, item details, and a preview cart work before launch. **All three digital editions are priced at $4.00 USD each before tax.** Only **Bumbles Amongst the Giants** has prepared purchase files. The other two digital editions remain placeholders until their field notes and downloadable files are approved. All three physical prints are placeholders until paper, size, production, prices, and shipping charges are decided. The cart cannot checkout with placeholders. It can checkout only the first digital edition when the account and fulfillment gate below is enabled.
+The shop catalog has two photographs, each in digital and physical-print formats. **Bumbles Amongst the Giants** is the live $4.00 digital edition. Gold & Ivory remains a preview while its title and field note are revised. Both physical prints are placeholders until paper, size, production, prices, and shipping charges are decided. The cart can checkout only the first digital edition.
 
 The first photograph depicts a female worker common eastern bumblebee (*Bombus impatiens*) visiting purple giant hyssop (*Agastache scrophulariifolia*), as confirmed by the owner. The other two photographs use descriptive working titles pending species review. Public images are previews; upload the owner-approved `TWKH-Bumbles-Amongst-the-Giants-Digital-Edition.zip` to the production private `PRIVATE_FILES` KV namespace under the unchanged internal key `shop/visit-to-the-hyssop-v1.zip`. Never commit purchased files or Stripe credentials to this public repository.
 
